@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -17,12 +18,13 @@ public class UserController {
 
     @RequestMapping(value = "hello", method = RequestMethod.GET)
     @ResponseBody
-    public User toLogin(User user){
+    public User toLogin(User user) {
         return user;
     }
 
-    @RequestMapping(value = "user/getUserById", method = RequestMethod.GET)
-    public User getUserById(String id) {
+    @RequestMapping(value = "user/getUserById", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public User getUserById(@RequestParam("id") String id) {
         return userService.getUserById(id);
     }
 }

@@ -9,20 +9,20 @@ import javax.persistence.Table;
 @Table(name="user")
 public class User {
 
-    private String userid;
+    private String userId;
     private String password;
     private String name;
     private int team;
     private int level;
 
     @Id
-    @Column(name="userid",nullable = false,unique = true)
-    public String getUserid() {
-        return userid;
+    @Column(name="userId",nullable = false,unique = true)
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Column(name="password")

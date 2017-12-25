@@ -12,15 +12,17 @@ public class UserDAO {
 
     @Resource
     private SessionFactory sessionFactory;
+    private Session session;
 
-    @SuppressWarnings("unused")
     private Session getSession() {
-        return sessionFactory.getCurrentSession();
+        if (session == null) {
+            session = sessionFactory.openSession();
+        }
+        return session;
     }
 
     public User getUserById(String id) {
-        return (User) this.getSession().createQuery("from user where id =?").setParameter(0, id).uniqueResult();
+        return (User) getSession().createQuery("from User where userId =?").setParameter(0, id).uniqueResult();
     }
-
 
 }
