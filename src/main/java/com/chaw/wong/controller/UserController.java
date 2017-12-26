@@ -4,10 +4,7 @@ import com.chaw.wong.entity.User;
 import com.chaw.wong.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -18,7 +15,13 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "user/getUserById", method = {RequestMethod.POST, RequestMethod.GET})
-    public User getUserById(@RequestParam("id") String id) {
-        return userService.getUserById(id);
+    public User getUserById(@RequestBody User user) {
+        return userService.getUserById(user);
+    }
+
+    @ResponseBody
+    @RequestMapping(value="user/insertSomeData",method = {RequestMethod.POST, RequestMethod.GET})
+    public User insertSomeData(@RequestBody User user){
+        return userService.insertSomeData(user);
     }
 }

@@ -21,8 +21,8 @@ public class UserDAO {
         return session;
     }
 
-    public User getUserById(String id) {
-        return (User) getSession().createQuery("from User where userId =?").setParameter(0, id).uniqueResult();
+    public User getUserById(User user) {
+        return (User) getSession().createQuery("from User where userId =? and password = ?").setParameter(0, user.getUserId()).setParameter(1,user.getPassword()).uniqueResult();
     }
 
 }
