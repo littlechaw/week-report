@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
@@ -17,10 +18,11 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "user/getUserById", method = {RequestMethod.POST, RequestMethod.GET})
-    public Boolean getUserById(@RequestBody User user) {
+    public Boolean getUserById(@RequestBody User user, HttpServletRequest request) {
         User res = userService.getUserById(user);
         //保存session
-//        HttpSession session=request.getSession();
+        HttpSession session = request.getSession();
+        session.setAttribute("userInfo", res);
         Boolean bres = false;
         if (res != null) {
             bres = true;
