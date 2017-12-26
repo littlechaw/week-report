@@ -24,7 +24,7 @@ public class UserController {
         HttpSession session = request.getSession();
         session.setAttribute("userInfo", res);
         Boolean bres = false;
-        if (res != null) {
+        if (res.getName() != null) {
             bres = true;
         }
         return bres;

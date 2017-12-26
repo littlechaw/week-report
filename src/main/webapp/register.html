@@ -29,13 +29,16 @@
                     url: "user/insertSomeData",
                     method: "POST",
                     data: data
-                }).success(function (data) {
-                    if (data) {
+                }).then(function onSuccess(response) {
+                    if (response.data) {
                         window.location.href = "./login.html";
+                    } else {
+                        alert("去打刘星辰");
                     }
-                }).error(function (e) {
-                    console.log(e);
-                })
+
+                }).catch(function onError(response) {
+                    console.error(response);
+                });
             };
 
         });

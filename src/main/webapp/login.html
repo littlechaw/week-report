@@ -25,15 +25,17 @@
                     url: "user/getUserById",
                     method: "POST",
                     data: data
-                }).success(function (data) {
-                    if (data) {
+                }).then(function onSuccess(response) {
+                    if (response.data) {
+                        console.info(response);
                         window.location.href = "./index.html";
                     } else {
-                        alert("你吗的密码都输不对");
+                        alert("密码输入错误,去打刘星辰");
                     }
-                }).error(function () {
-                    console.log("error");
-                })
+                }).catch(function onError(response) {
+                    console.error(response);
+                });
+
             };
 
         });
