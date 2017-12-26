@@ -27,7 +27,9 @@
                     method: "POST",
                     data: data
                 }).success(function (data) {
-                    console.log(data);
+                    if(data){
+                        window.location.href="./login.html";
+                    }
                 }).error(function (e) {
                     console.log(e);
                 })

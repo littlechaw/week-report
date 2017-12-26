@@ -27,7 +27,11 @@
                     method: "POST",
                     data: data
                 }).success(function (data) {
-                    console.log(data);
+                    if (data) {
+                        window.location.href = "./index.html";
+                    } else {
+                        alert("你吗的密码都输不对");
+                    }
                 }).error(function () {
                     console.log("error");
                 })
