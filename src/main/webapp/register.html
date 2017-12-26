@@ -21,14 +21,17 @@
                     name: $scope.name,
                     team: $scope.team
                 };
-                console.info(data);
+                if (data.team > 5) {
+                    alert("请正确填写团队信息");
+                    return;
+                }
                 $http({
                     url: "user/insertSomeData",
                     method: "POST",
                     data: data
                 }).success(function (data) {
-                    if(data){
-                        window.location.href="./login.html";
+                    if (data) {
+                        window.location.href = "./login.html";
                     }
                 }).error(function (e) {
                     console.log(e);
