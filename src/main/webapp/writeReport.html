@@ -1,76 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Myapp">
+<html lang="en" ng-app="writeReport">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Write - 周报</title>
-    <link type="favicon" rel="shortcut icon" href="img/favicon.ico"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/writeReport.css" rel="stylesheet">
-
-
-    <script type="text/javascript" src="js/jquery-2-1-3-min.js"></script>
-    <script type="text/javascript" src="js/md5.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
 </head>
-<body ng-controller="Controller">
-<div class="container">
-
-    <div class="form-group">
-        <h2>本周工作小结</h2>
-        <div class="row">
-            <div class="col-xs-4">
-                <input type="text" class="form-control" placeholder="内容">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="计划完成日期">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="完成百分比">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="实际完成日期">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="备注">
-            </div>
+<body ng-controller="writeCtrl">
+<div class="form-group">
+    <h2>本周工作小结</h2>
+    <div class="row">
+        <div class="col-xs-4">
+            <input type="text" class="form-control" placeholder="内容">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="计划完成日期">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="完成百分比">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="实际完成日期">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="备注">
         </div>
     </div>
-
-    <div class="form-group">
-        <h2>本周额外任务</h2>
-        <div class="row">
-            <div class="col-xs-4">
-                <input type="text" class="form-control" placeholder="内容">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="投入时间（小时）">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="完成日期">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="备注">
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h2>下周计划</h2>
-        <div class="row">
-            <div class="col-xs-4">
-                <input type="text" class="form-control" placeholder="内容">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="计划完成日期">
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" placeholder="备注">
-            </div>
-        </div>
-    </div>
-
-
 </div>
+
+<div class="form-group">
+    <h2>本周额外任务</h2>
+    <div class="row">
+        <div class="col-xs-4">
+            <input type="text" class="form-control" placeholder="内容">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="投入时间（小时）">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="完成日期">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="备注">
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <h2>下周计划</h2>
+    <div class="row">
+        <div class="col-xs-4">
+            <input type="text" class="form-control" placeholder="内容">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="计划完成日期">
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" placeholder="备注">
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-2-1-3-min.js"></script>
+<script type="text/javascript" src="js/md5.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script>
+    var app = angular.module('writeReport', []);
+    app.controller("writeCtrl", function ($scope) {
+
+    });
+</script>
+
 </body>
 </html>
