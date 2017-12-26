@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequestMapping(value = "/")
@@ -15,8 +17,15 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "user/getUserById", method = {RequestMethod.POST, RequestMethod.GET})
-    public User getUserById(@RequestBody User user) {
-        return userService.getUserById(user);
+    public Boolean getUserById(@RequestBody User user) {
+        User res = userService.getUserById(user);
+        //保存session
+//        HttpSession session=request.getSession();
+        Boolean bres = false;
+        if (res != null) {
+            bres = true;
+        }
+        return bres;
     }
 
     @ResponseBody

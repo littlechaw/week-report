@@ -1,7 +1,6 @@
 package com.chaw.wong.dao;
 
 import com.chaw.wong.entity.User;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -23,7 +22,8 @@ public class UserDAO {
     }
 
     public User getUserById(User user) {
-        return (User) getSession().createQuery("from User where userId =? and password = ?").setParameter(0, user.getUserId()).setParameter(1, user.getPassword()).uniqueResult();
+        User res = (User) getSession().createQuery("from User where userId =? and password = ?").setParameter(0, user.getUserId()).setParameter(1, user.getPassword()).uniqueResult();
+        return res;
     }
 
     public Boolean insertSomeData(User user) {
