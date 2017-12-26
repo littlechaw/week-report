@@ -16,14 +16,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "hello", method = RequestMethod.GET)
     @ResponseBody
-    public User toLogin(User user) {
-        return user;
-    }
-
     @RequestMapping(value = "user/getUserById", method = {RequestMethod.POST, RequestMethod.GET})
-    @ResponseBody
     public User getUserById(@RequestParam("id") String id) {
         return userService.getUserById(id);
     }
