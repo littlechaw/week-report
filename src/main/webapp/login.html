@@ -41,15 +41,16 @@
                 method: "POST",
                 data: data
             }).then(function onSuccess(response) {
+                console.info(response);
                 if (response.data) {
                     console.info(response);
                     window.location.href = "./index.html";
                 } else {
-                    alert("密码输入错误,去打刘星辰");
+                    alert("密码输入错误,去打叫兽");
                 }
             }).catch(function onError(response) {
                 if(response.status==500){
-                    alert("打死刘星辰");
+                    alert("打死叫兽");
                 }
                 console.error(response);
             });
