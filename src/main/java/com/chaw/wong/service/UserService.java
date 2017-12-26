@@ -16,5 +16,10 @@ public class UserService {
         return userDAO.getUserById(user);
     }
 
+    public Boolean insertSomeData(User user){
+
+        return userDAO.insertSomeData(user);
+    }
+
 
 }

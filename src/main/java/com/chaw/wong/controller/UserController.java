@@ -20,8 +20,9 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value="user/insertSomeData",method = {RequestMethod.POST, RequestMethod.GET})
-    public User insertSomeData(@RequestBody User user){
+    @RequestMapping(value = "user/insertSomeData", method = {RequestMethod.POST, RequestMethod.GET})
+    public Boolean insertSomeData(@RequestBody User user) {
+        user.setLevel(1);
         return userService.insertSomeData(user);
     }
 }

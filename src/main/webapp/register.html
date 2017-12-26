@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Myapp">
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
@@ -28,8 +28,8 @@
                     data: data
                 }).success(function (data) {
                     console.log(data);
-                }).error(function () {
-                    console.log("error");
+                }).error(function (e) {
+                    console.log(e);
                 })
             };
 
@@ -37,7 +37,7 @@
 
     </script>
 </head>
-<body>
+<body ng-controller="Controller">
 <form class="form-signin">
     <h2 class="form-signin-heading">Regester</h2>
     <label for="inputWorkNum" class="sr-only">工号</label>
@@ -49,7 +49,7 @@
     <label for="inputTeam" class="sr-only">团队</label>
     <input type="number" id="inputTeam" class="form-control" ng-model="team" placeholder="1.android 2.ios 3.java 4.h5" required>
 
-    <button class="btn btn-lg btn-primary btn-block form-margintop-ten" type="submit" ng-click="regester()">注&nbsp;&nbsp;册</button>
+    <button class="btn btn-lg btn-primary btn-block form-margintop-ten" ng-click="regester()">注&nbsp;&nbsp;册</button>
     <a href="./login.html">去主页</a>
 </form>
 </body>
