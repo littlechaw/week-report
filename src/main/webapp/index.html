@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Myapp">
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -8,23 +8,33 @@
     <link type="favicon" rel="shortcut icon" href="img/favicon.ico"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/index.css"/>
-
-    <script type="text/javascript" src="js/jquery-2-1-3-min.js"></script>
-    <script type="text/javascript" src="js/md5.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/angular-route.min.js"></script>
-    <script>
-        var app = angular.module('Myapp', []);
-        app.controller('Controller', function ($scope, $http) {
-
-        });
-
-    </script>
 </head>
-<body ng-controller="Controller">
-<div class="container">
+<body ng-app='routingDemoApp'>
 
-</div>
+<h2>AngularJS 路由应用</h2>
+<ul>
+    <li><a href="#/">首页</a></li>
+    <li><a href="#/computers">电脑</a></li>
+    <li><a href="#/printers">打印机</a></li>
+    <li><a href="#/blabla">其他</a></li>
+</ul>
+
+<div ng-view></div>
+<script type="text/javascript" src="js/jquery-2-1-3-min.js"></script>
+<script type="text/javascript" src="js/md5.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular-route.min.js"></script>
+<script>
+    angular.module('routingDemoApp',['ngRoute'])
+        .config(['$routeProvider', function($routeProvider){
+            $routeProvider
+                .when('/',{template:'这是首页页面'})
+                .when('/computers',{template:'这是电脑分类页面'})
+                .when('/printers',{template:'这是打印机页面'})
+                .otherwise({redirectTo:'/'});
+        }]);
+</script>
+
 
 </body>
 </html>
