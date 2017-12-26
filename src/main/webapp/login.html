@@ -33,6 +33,9 @@
                         alert("密码输入错误,去打刘星辰");
                     }
                 }).catch(function onError(response) {
+                    if(response.status==500){
+                        alert("打死刘星辰");
+                    }
                     console.error(response);
                 });
 
