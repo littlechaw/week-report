@@ -19,7 +19,7 @@
             </div>
         </div>
         <div ng-repeat="t in formData.doneObj track by $index">
-            <div class="row margin-bottom-ten">
+            <div class="row margin-bottom-ten" data-index="{{$index}}">
                 <div class="col-xs-4">
                     <input type="text" class="form-control" ng-model="t.content">
                 </div>
@@ -56,18 +56,20 @@
                 备注
             </div>
         </div>
-        <div class="row margin-bottom-ten">
-            <div class="col-xs-4">
-                <input type="text" class="form-control" ng-model="extraContent">
-            </div>
-            <div class="col-xs-1">
-                <input type="text" class="form-control" ng-model="extraUsedTime">
-            </div>
-            <div class="col-xs-1">
-                <input type="text" class="form-control" ng-model="extraDoneTime">
-            </div>
-            <div class="col-xs-3">
-                <input type="text" class="form-control" ng-model="extraRemark">
+        <div ng-repeat="e in formData.extraObj track by $index">
+            <div class="row margin-bottom-ten">
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" ng-model="e.content">
+                </div>
+                <div class="col-xs-1">
+                    <input type="text" class="form-control" ng-model="e.usedTime">
+                </div>
+                <div class="col-xs-1">
+                    <input type="text" class="form-control" ng-model="e.doneTime">
+                </div>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" ng-model="e.remark">
+                </div>
             </div>
         </div>
     </div>
@@ -85,16 +87,23 @@
                 备注
             </div>
         </div>
-        <div class="row margin-bottom-ten">
-            <div class="col-xs-4">
-                <input type="text" class="form-control" ng-model="nextContent">
+        <div ng-repeat="p in formData.planObj track by $index">
+            <div class="row margin-bottom-ten">
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" ng-model="p.content">
+                </div>
+                <div class="col-xs-1">
+                    <input type="text" class="form-control" ng-model="p.planTime">
+                </div>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" ng-model="p.remark">
+                </div>
             </div>
-            <div class="col-xs-1">
-                <input type="text" class="form-control" ng-model="nextPlanTime">
-            </div>
-            <div class="col-xs-3">
-                <input type="text" class="form-control" ng-model="nextRemark">
-            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row text-center">
+            <button class="btn btn-success" ng-click="addReport();">提交周报</button>
         </div>
     </div>
 

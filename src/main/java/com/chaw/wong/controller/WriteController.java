@@ -24,12 +24,10 @@ public class WriteController {
 
     @ResponseBody
     @RequestMapping(value = "write/insertThis", method = {RequestMethod.POST, RequestMethod.GET})
-    public Object insertThis(@RequestBody DoneWeekReport dwr, HttpServletRequest request) {
+    public Object insertThis(@RequestBody Object report, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Object user = session.getAttribute("userInfo");
-        Boolean res = writeService.insertThis(user, dwr);
-
-        return user;
+        String id = ((User) session.getAttribute("userInfo")).getUserId();
+        return writeService.insertReport(id, report);
     }
 
     @ResponseBody

@@ -44,14 +44,35 @@
     mainApp.controller("writeCtrl", function ($scope, $http) {
         $scope.$on('$viewContentLoaded', function () {
             $scope.formData = {};
+            $scope.formData.extraObj = {
+                content: null
+            };
+            $scope.formData.planObj = {
+                content: null
+            };
             $http({
                 url: "get/getDwr",
                 method: "POST",
             }).then(function onSuccess(response) {
-                console.info(response);
                 if (response.data) {
                     $scope.formData.doneObj = response.data;
+                    var i = $scope.formData.doneObj.length;
+                    var temp = $scope.formData.doneObj;
+                    if (i < 5) {
+                        for (var j = i; j < 5; j++) {
+                            $scope.formData.doneObj[j] = {
+                                content: null,
+                                planTime: null
+                            }
+                        }
+                    }
                 } else {
+                    for (var i = 0; i < 5; i++) {
+                        $scope.formData.doneObj[i] = {
+                            content: null,
+                            planTime: null
+                        }
+                    }
                     alert("去打叫兽");
                 }
             }).catch(function onError(response) {
@@ -61,21 +82,15 @@
                 console.error(response);
             });
         });
-        $scope.addThis = function () {
-            var data = {
-                // content: $scope.,
-                // planTime: $scope.,
-                // percent: $scope.,
-                // doneTime: $scope.,
-                // remark: $scope.
-            };
+        $scope.addReport = function () {
+            console.info($scope.formData);
             $http({
                 url: "write/insertThis",
                 method: "POST",
-                data: data
+                data: $scope.formData
             }).then(function onSuccess(response) {
                 if (response.data) {
-
+                    alert("提交成功");
                 } else {
                     alert("网络不太好，去打叫兽");
                 }
