@@ -14,3 +14,7 @@
 .form-group .margin-bottom-ten {
     margin-bottom: 10px;
 }
+
+.form-group .text-center {
+    text-overflow: ellipsis;
+}
