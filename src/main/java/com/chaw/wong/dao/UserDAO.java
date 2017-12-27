@@ -32,7 +32,7 @@ public class UserDAO {
         if (num > 0) {
             return true;
         } else {
-            return true;
+            return false;
         }
     }
 
