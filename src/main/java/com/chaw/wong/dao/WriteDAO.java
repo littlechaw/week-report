@@ -26,9 +26,7 @@ public class WriteDAO {
 
     //插入到本周小结
     public Boolean insertReport(String id, Object report) {
-//        for(int i=0;i<report.;i++){
-//
-//        }
+
         return true;
     }
 
