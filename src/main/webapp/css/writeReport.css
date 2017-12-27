@@ -7,6 +7,12 @@
     padding: 5px;
 }
 
+.form-group .tableTop .text-center {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .form-group .btn.btn-success {
     width: 100px;
 }
