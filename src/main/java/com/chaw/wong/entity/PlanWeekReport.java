@@ -6,12 +6,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "nextwr")
+@Table(name = "report_plan")
 public class PlanWeekReport {
     private int id;
     private String userId;
+    private String content;
     private String planTime;
     private String remark;
+    private int weekNum;
 
     @Id
     @Column(name = "id")
@@ -32,6 +34,16 @@ public class PlanWeekReport {
         this.userId = userId;
     }
 
+
+    @Column(name = "content")
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     @Column(name = "planTime")
     public String getPlanTime() {
         return planTime;
@@ -50,5 +62,12 @@ public class PlanWeekReport {
         this.remark = remark;
     }
 
+    @Column(name = "weekNum")
+    public int getWeekNum() {
+        return weekNum;
+    }
 
+    public void setWeekNum(int weekNum) {
+        this.weekNum = weekNum;
+    }
 }

@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "extrawr")
+@Table(name = "report_extra")
 public class ExtraWeekReport {
     private int id;
     private String userId;
@@ -14,6 +14,8 @@ public class ExtraWeekReport {
     private int usedTime;
     private String doneTime;
     private String remark;
+    private int weekNum;
+
 
     @Id
     @Column(name = "id")
@@ -68,5 +70,14 @@ public class ExtraWeekReport {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    @Column(name = "weekNum")
+    public int getWeekNum() {
+        return weekNum;
+    }
+
+    public void setWeekNum(int weekNum) {
+        this.weekNum = weekNum;
     }
 }

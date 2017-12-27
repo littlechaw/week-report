@@ -7,6 +7,8 @@
     <link type="favicon" rel="shortcut icon" href="img/favicon.ico"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/writeReport.css"/>
+
 </head>
 <body>
 <div class="container">
@@ -39,15 +41,34 @@
                 redirectTo: '/write'
             });
         }]);
-    mainApp.controller("writeCtrl", function ($scope,$http) {
-        $scope.addThis=function () {
-            var data={
-                content:$scope.thisContent,
-                planTime:$scope.thisPlanTime,
-                percent:$scope.thisPercent,
-                doneTime:$scope.thisDoneTime,
-                remark:$scope.thisRemark
-            }
+    mainApp.controller("writeCtrl", function ($scope, $http) {
+        $scope.$on('$viewContentLoaded', function () {
+            $scope.formData = {};
+            $http({
+                url: "get/getDwr",
+                method: "POST",
+            }).then(function onSuccess(response) {
+                console.info(response);
+                if (response.data) {
+                    $scope.formData.doneObj = response.data;
+                } else {
+                    alert("去打叫兽");
+                }
+            }).catch(function onError(response) {
+                if (response.status == 500) {
+                    alert("打死叫兽");
+                }
+                console.error(response);
+            });
+        });
+        $scope.addThis = function () {
+            var data = {
+                // content: $scope.,
+                // planTime: $scope.,
+                // percent: $scope.,
+                // doneTime: $scope.,
+                // remark: $scope.
+            };
             $http({
                 url: "write/insertThis",
                 method: "POST",
@@ -59,16 +80,16 @@
                     alert("网络不太好，去打叫兽");
                 }
             }).catch(function onError(response) {
-                if(response.status==500){
+                if (response.status == 500) {
                     alert("打死叫兽");
                 }
                 console.error(response);
             });
         };
-        $scope.addExtra=function () {
+        $scope.addExtra = function () {
 
         };
-        $scope.addNext=function () {
+        $scope.addNext = function () {
 
         };
     });
