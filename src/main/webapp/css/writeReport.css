@@ -4,7 +4,11 @@
     background: gray;
     height: 30px;
     margin: 10px 0;
-    padding: 5px;
+    padding-top: 5px;
+}
+
+.form-group .tableContent {
+    margin: 0 0 10px;
 }
 
 .form-group .tableTop .text-center {
@@ -15,8 +19,4 @@
 
 .form-group .btn.btn-success {
     width: 100px;
-}
-
-.form-group .margin-bottom-ten {
-    margin-bottom: 10px;
 }
