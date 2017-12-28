@@ -12,7 +12,7 @@ public class DoneWeekReport {
     private String userId;
     private String content;
     private String planTime;
-    private int percent;
+    private String percent;
     private String doneTime;
     private String remark;
     private int weekNum;
@@ -55,11 +55,11 @@ public class DoneWeekReport {
     }
 
     @Column(name = "percent")
-    public int getPercent() {
+    public String getPercent() {
         return percent;
     }
 
-    public void setPercent(int percent) {
+    public void setPercent(String percent) {
         this.percent = percent;
     }
 

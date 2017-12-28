@@ -26,11 +26,11 @@ public class WriteDAO {
     public Boolean insertDone(String id, Object report, int weekNum) {
         String content = (String) ((Map) report).get("content");
         String planTime = (String) ((Map) report).get("planTime");
-        int percent = (int) ((Map) report).get("percent");
+        String percent = (String) ((Map) report).get("percent");
         String doneTime = (String) ((Map) report).get("doneTime");
         String remark = (String) ((Map) report).get("remark");
         String sql = "insert into report_done(userId,content,planTime,percent,doneTime,remark,weekNum) " +
-                "values('" + id + "','" + content + "','" + planTime + "'," + percent + ",'" + doneTime + "','" + remark + "'," + weekNum + ")";
+                "values('" + id + "','" + content + "','" + planTime + "','" + percent + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
         if (num > 0) {
             return true;

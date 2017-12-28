@@ -11,7 +11,7 @@ public class ExtraWeekReport {
     private int id;
     private String userId;
     private String content;
-    private int usedTime;
+    private String usedTime;
     private String doneTime;
     private String remark;
     private int weekNum;
@@ -46,11 +46,11 @@ public class ExtraWeekReport {
     }
 
     @Column(name = "usedTime")
-    public int getUsedTime() {
+    public String getUsedTime() {
         return usedTime;
     }
 
-    public void setUsedTime(int usedTime) {
+    public void setUsedTime(String usedTime) {
         this.usedTime = usedTime;
     }
 
