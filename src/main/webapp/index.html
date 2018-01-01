@@ -11,11 +11,12 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container" ng-controller="mainController">
     <h2>来自渣哥的问候</h2>
     <ul>
         <li><a href="#/write">写周报</a></li>
         <li><a href="#/record">周报记录</a></li>
+        <li><a href="#/daochu" ng-if="isAdmin">周报合集</a></li>
     </ul>
 
     <div ng-view></div>
@@ -25,6 +26,7 @@
 
 <script type="text/javascript" src="js/jquery-2-1-3-min.js"></script>
 <script type="text/javascript" src="js/md5.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/angular-route.min.js"></script>
 <script>
@@ -37,10 +39,28 @@
             }).when('/record', {
                 templateUrl: 'record.html',
                 controller: 'recordCtrl'
+            }).when('/daochu', {
+                temlateUrl: 'daochu.html',
+                controller: 'daochuCtrl'
             }).otherwise({
                 redirectTo: '/write'
             });
         }]);
+    mainApp.controller("mainController", function ($scope, $http) {
+        $scope.$on('$viewContentLoaded', function () {
+            $http({
+                url: "get/isAdmin",
+                method: "POST",
+            }).then(function onSuccess(response) {
+                $scope.isAdmin = response.data;
+            }).catch(function onError(response) {
+                if (response.status == 500) {
+                    alert("打死叫兽");
+                }
+                console.error(response);
+            });
+        });
+    });
     mainApp.controller("writeCtrl", function ($scope, $http) {
         $scope.$on('$viewContentLoaded', function () {
             $scope.formData = {};
@@ -125,9 +145,11 @@
                 console.error(response);
             });
         });
-
-
     });
+    mainApp.controller("daochuCtrl", function ($scope, $http) {
+
+
+    })
 </script>
 </body>
 </html>

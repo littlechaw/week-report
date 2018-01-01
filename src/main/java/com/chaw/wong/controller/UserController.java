@@ -31,6 +31,18 @@ public class UserController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "get/isAdmin", method = {RequestMethod.GET, RequestMethod.POST})
+    public Boolean judgeIsAdmin(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        int level = ((User) session.getAttribute("userInfo")).getLevel();
+        if (level == 666) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @ResponseBody
     @RequestMapping(value = "user/insertSomeData", method = {RequestMethod.POST, RequestMethod.GET})
     public Boolean insertSomeData(@RequestBody User user) {
         user.setLevel(1);
