@@ -66,6 +66,27 @@
             $scope.formData = {};
             $scope.formData.extraObj = [{}];
             $scope.formData.planObj = [{}];
+            $scope.changeWeek = function (e) {
+                var link = $(e.target).closest("li");
+                var planTimeWeekText = link.text();
+                var planTimeWeek = link.attr("data-value");
+                var index = link.parent().parent().parent().parent().attr("data-index");
+                $scope.formData.doneObj[index].planTimeWeek = planTimeWeekText;
+                $scope.formData.doneObj[index].planTime = $scope.timeTree[planTimeWeek];
+            }
+
+            $http({
+                url: "get/getDayinWeek",
+                method: "POST",
+            }).then(function onSuccess(data) {
+                if (data && data.data) {
+                    $scope.timeTree = data.data;
+                }
+            }).catch(function onError(e) {
+                console.info(e);
+            });
+
+
             $http({
                 url: "get/getDwr",
                 method: "POST",

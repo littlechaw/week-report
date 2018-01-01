@@ -12,6 +12,7 @@ public class PlanWeekReport {
     private String userId;
     private String content;
     private String planTime;
+    private String planTimeWeek;
     private String remark;
     private int weekNum;
 
@@ -51,6 +52,15 @@ public class PlanWeekReport {
 
     public void setPlanTime(String planTime) {
         this.planTime = planTime;
+    }
+
+    @Column(name = "planTimeWeek")
+    public String getPlanTimeWeek() {
+        return planTimeWeek;
+    }
+
+    public void setPlanTimeWeek(String planTimeWeek) {
+        this.planTimeWeek = planTimeWeek;
     }
 
     @Column(name = "remark")

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,28 @@ import java.util.Map;
 public class WriteController {
     @Autowired
     private WriteService writeService;
+
+
+    @ResponseBody
+    @RequestMapping(value = "get/getDayinWeek", method = {RequestMethod.POST, RequestMethod.GET})
+    public List getFirstDayOfWeek() {
+        List result = new ArrayList();
+        Calendar cal = Calendar.getInstance();
+        int date = cal.get(Calendar.DAY_OF_MONTH);
+        int n = cal.get(Calendar.DAY_OF_WEEK);
+        if (n == 1) {
+            n = 7;
+        } else {
+            n = n - 1;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        for (int i = 1; i <= 7; i++) {
+            cal.set(Calendar.DAY_OF_MONTH, date + i - n);
+            result.add(sdf.format(cal.getTime()));
+        }
+        return result;
+    }
 
     @ResponseBody
     @RequestMapping(value = "write/insertThis", method = {RequestMethod.POST, RequestMethod.GET})
