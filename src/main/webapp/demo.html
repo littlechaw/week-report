@@ -167,7 +167,121 @@
                     ],
                     "name": "颜色"
                 }
-            ]
+            ],
+            "productList": [
+                {
+                    "id": 2302,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1108_1115_1117",
+                    "goods_sn": "789987899998",
+                    "goods_number": 0,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2301,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1108_1116_1117",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2300,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1109_1115_1117",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2299,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1109_1116_1117",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2298,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1110_1115_1117",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2297,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1110_1116_1117",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2294,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1109_1115_1118",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2293,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1109_1116_1118",
+                    "goods_sn": "789987899998",
+                    "goods_number": 0,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2292,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1110_1115_1118",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2291,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1110_1116_1118",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2290,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1108_1115_1119",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2289,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1108_1116_1119",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2287,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1109_1116_1119",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }, {
+                    "id": 2286,
+                    "goods_id": 1181119,
+                    "goods_specification_ids": "1110_1115_1119",
+                    "goods_sn": "789987899998",
+                    "goods_number": 999,
+                    "market_price": 1000.00,
+                    "retail_price": 1000.00
+                }]
         };
         var b = {};
         for (var i = 0; i < a.specificationList.length; i++) {
@@ -181,24 +295,26 @@
                 b["size"] = a.specificationList[i];
             }
         }
+
+        $scope.originalData = a;
         $scope.formData = b;
 
         $scope.showValue1 = function (e) {
             var name = $(e.target).attr("name");
             var index = $(e.target).attr("data-index");
-            $scope.colorid=$scope.formData.color.valueList[index].value;
-            console.info($scope.colorid);
+            $scope.colorid = $scope.formData.color.valueList[index].id;
+
         };
         $scope.showValue2 = function (e) {
             var name = $(e.target).attr("name");
             var index = $(e.target).attr("data-index");
-            $scope.isspecialid=$scope.formData.isspecial.valueList[index].value;
+            $scope.isspecialid = $scope.formData.isspecial.valueList[index].value;
             console.info($scope.isspecialid);
         };
         $scope.showValue3 = function (e) {
             var name = $(e.target).attr("name");
             var index = $(e.target).attr("data-index");
-            $scope.sizeid=$scope.formData.size.valueList[index].value;
+            $scope.sizeid = $scope.formData.size.valueList[index].value;
             console.info($scope.sizeid);
         };
 
