@@ -41,6 +41,10 @@ public class WriteService {
         return true;
     }
 
+    public Object selectLastWeek(String id, int weekNum) {
+        return writeDAO.selectLastWeek(id, weekNum);
+    }
+
     public List<PlanWeekReport> getByWeekNum(int weekNum, String id) {
         return writeDAO.getByWeekNum(weekNum, id);
     }

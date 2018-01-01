@@ -106,7 +106,26 @@
 
         };
     });
-    mainApp.controller("recordCtrl", function ($scope) {
+    mainApp.controller("recordCtrl", function ($scope, $http) {
+        $scope.$on('$viewContentLoaded', function () {
+            $http({
+                url: "get/getMyReport",
+                method: "POST",
+                data: $scope.formData
+            }).then(function onSuccess(response) {
+                if (response.data) {
+                    $scope.formData = response.data;
+                } else {
+                    alert("网络不太好，去打叫兽");
+                }
+            }).catch(function onError(response) {
+                if (response.status == 500) {
+                    alert("打死叫兽");
+                }
+                console.error(response);
+            });
+        });
+
 
     });
 </script>

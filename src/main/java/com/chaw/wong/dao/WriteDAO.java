@@ -1,11 +1,14 @@
 package com.chaw.wong.dao;
 
+import com.chaw.wong.entity.DoneWeekReport;
+import com.chaw.wong.entity.ExtraWeekReport;
 import com.chaw.wong.entity.PlanWeekReport;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +71,20 @@ public class WriteDAO {
         }
     }
 
+    //查询周报
+    public Object selectLastWeek(String id, int weekNum) {
+        String hql1 = "from PlanWeekReport where weekNum = ? and userId=?";
+        String hql2 = "from DoneWeekReport where weekNum = ? and userId=?";
+        String hql3 = "from ExtraWeekReport where weekNum = ? and userId=?";
+        List<PlanWeekReport> res1 = getSession().createQuery(hql1).setParameter(0, weekNum+1).setParameter(1, id).list();
+        List<DoneWeekReport> res2 = getSession().createQuery(hql2).setParameter(0, weekNum).setParameter(1, id).list();
+        List<ExtraWeekReport> res3 = getSession().createQuery(hql3).setParameter(0, weekNum).setParameter(1, id).list();
+        Map map = new HashMap();
+        map.put("planObj", res1);
+        map.put("doneObj", res2);
+        map.put("extraObj", res3);
+        return map;
+    }
 
     public List<PlanWeekReport> getByWeekNum(int weekNum, String id) {
         String hql = "from PlanWeekReport where weekNum = ? and userId=?";

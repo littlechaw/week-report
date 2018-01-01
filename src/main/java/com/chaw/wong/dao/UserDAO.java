@@ -27,6 +27,11 @@ public class UserDAO {
     }
 
     public Boolean insertSomeData(User user) {
+        String getsql = "from User where userId=?";
+        User res = (User) getSession().createQuery(getsql).setParameter(0, user.getUserId()).uniqueResult();
+        if (res != null) {
+            return false;
+        }
         String sql = "insert into user values('" + user.getUserId() + "','" + user.getPassword() + "','" + user.getName() + "'," + user.getTeam() + "," + user.getLevel() + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
         if (num > 0) {
