@@ -54,15 +54,6 @@ public class PlanWeekReport {
         this.planTime = planTime;
     }
 
-    @Column(name = "planTimeWeek")
-    public String getPlanTimeWeek() {
-        return planTimeWeek;
-    }
-
-    public void setPlanTimeWeek(String planTimeWeek) {
-        this.planTimeWeek = planTimeWeek;
-    }
-
     @Column(name = "remark")
     public String getRemark() {
         return remark;
