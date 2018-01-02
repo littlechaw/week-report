@@ -73,6 +73,40 @@
                 var index = link.parent().parent().parent().parent().attr("data-index");
                 $scope.formData.doneObj[index].planTimeWeek = planTimeWeekText;
                 $scope.formData.doneObj[index].planTime = $scope.timeTree[planTimeWeek];
+            };
+
+            $scope.changePercent = function (e) {
+                var link = $(e.target).closest("li");
+                var percent = link.text();
+                var index = link.parent().parent().parent().parent().attr("data-index");
+                $scope.formData.doneObj[index].percent = percent;
+            };
+
+            $scope.changeDoneWeek = function (e) {
+                var link = $(e.target).closest("li");
+                var index = link.parent().parent().parent().parent().attr("data-index");
+                var doneWeekNum = link.attr("data-value");
+                var doneWeek = link.text();
+                $scope.formData.doneObj[index].doneWeek = doneWeek;
+                $scope.formData.doneObj[index].doneTime = $scope.timeTree[doneWeekNum];
+            };
+
+            $scope.changeExtraWeek = function (e) {
+                var link = $(e.target).closest("li");
+                var doneWeekText = link.text();
+                var doneWeekNum = link.attr("data-value");
+                var index = link.parent().parent().parent().parent().attr("data-index");
+                $scope.formData.extraObj[index].doneWeekText = doneWeekText;
+                $scope.formData.extraObj[index].doneTime = $scope.timeTree[doneWeekNum];
+            };
+
+            $scope.changePlanWeek = function (e) {
+                var link = $(e.target).closest("li");
+                var planWeekText = link.text();
+                var planWeekNum = link.attr("data-value");
+                var index = link.parent().parent().parent().parent().attr("data-index");
+                $scope.formData.planObj[index].planWeekText = planWeekText;
+                $scope.formData.planObj[index].planTime = $scope.timeTree[planWeekNum];
             }
 
             $http({
@@ -98,7 +132,7 @@
                         for (var j = i; j < 5; j++) {
                             $scope.formData.doneObj[j] = {
                                 content: null,
-                                planTime: null
+                                planTime: $scope.timeTree[5]
                             }
                         }
                     }
@@ -107,7 +141,7 @@
                         $scope.formData.doneObj[i] = {
                             content: null,
                             planTime: null,
-                            percent: null,
+                            percent: "100%",
                             doneTime: null,
                             remark: null
                         }
