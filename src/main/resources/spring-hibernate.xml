@@ -13,6 +13,18 @@
         <property name="password" value="${jdbc.password}" />
         <property name="filters" value="config" />
         <property name="connectionProperties" value="config.decrypt=true;config.decrypt.key=${publickey}" />
+
+        <property name="maxActive" value="200" />
+        <property name="initialSize" value="2" />
+        <property name="maxWait" value="60000" />
+        <property name="minIdle" value="1" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <property name="validationQuery" value="SELECT 'x'" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+
     </bean>
 
     <!--配置session工厂-->
