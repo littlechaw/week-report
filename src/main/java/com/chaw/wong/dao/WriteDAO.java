@@ -27,11 +27,11 @@ public class WriteDAO {
 
     //插入到本周小结
     public Boolean insertDone(String id, Object report, int weekNum) {
-        String content = (String) ((Map) report).get("content");
-        String planTime = (String) ((Map) report).get("planTime");
-        String percent = (String) ((Map) report).get("percent");
-        String doneTime = (String) ((Map) report).get("doneTime");
-        String remark = (String) ((Map) report).get("remark");
+        String content = ((Map) report).get("content").toString();
+        String planTime = ((Map) report).get("planTime").toString();
+        String percent = ((Map) report).get("percent").toString();
+        String doneTime = ((Map) report).get("doneTime").toString();
+        String remark = ((Map) report).get("remark").toString();
         String sql = "insert into report_done(userId,content,planTime,percent,doneTime,remark,weekNum) " +
                 "values('" + id + "','" + content + "','" + planTime + "','" + percent + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
@@ -43,10 +43,10 @@ public class WriteDAO {
     }
 
     public Boolean insertExtra(String id, Object report, int weekNum) {
-        String content = (String) ((Map) report).get("content");
-        String usedTime = (String) ((Map) report).get("usedTime");
-        String doneTime = (String) ((Map) report).get("doneTime");
-        String remark = (String) ((Map) report).get("remark");
+        String content = ((Map) report).get("content").toString();
+        String usedTime = ((Map) report).get("usedTime").toString();
+        String doneTime = ((Map) report).get("doneTime").toString();
+        String remark = ((Map) report).get("remark").toString();
         String sql = "insert into report_extra(userId,content,usedTime,doneTime,remark,weekNum) " +
                 "values('" + id + "','" + content + "','" + usedTime + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
@@ -58,9 +58,9 @@ public class WriteDAO {
     }
 
     public Boolean insertPlan(String id, Object report, int weekNum) {
-        String content = (String) ((Map) report).get("content");
-        String planTime = (String) ((Map) report).get("planTime");
-        String remark = (String) ((Map) report).get("remark");
+        String content = ((Map) report).get("content").toString();
+        String planTime = ((Map) report).get("planTime").toString();
+        String remark = ((Map) report).get("remark").toString();
         String sql = "insert into report_plan(userId,content,planTime,remark,weekNum) " +
                 "values('" + id + "','" + content + "','" + planTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
@@ -76,7 +76,7 @@ public class WriteDAO {
         String hql1 = "from PlanWeekReport where weekNum = ? and userId=?";
         String hql2 = "from DoneWeekReport where weekNum = ? and userId=?";
         String hql3 = "from ExtraWeekReport where weekNum = ? and userId=?";
-        List<PlanWeekReport> res1 = getSession().createQuery(hql1).setParameter(0, weekNum+1).setParameter(1, id).list();
+        List<PlanWeekReport> res1 = getSession().createQuery(hql1).setParameter(0, weekNum + 1).setParameter(1, id).list();
         List<DoneWeekReport> res2 = getSession().createQuery(hql2).setParameter(0, weekNum).setParameter(1, id).list();
         List<ExtraWeekReport> res3 = getSession().createQuery(hql3).setParameter(0, weekNum).setParameter(1, id).list();
         Map map = new HashMap();
