@@ -27,7 +27,7 @@
                     <!--<input type="text" class="form-control" ng-model="t.planTime">-->
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
-                            {{t.planTimeWeek?t.planTimeWeek:"周一"}} <span class="caret"></span>
+                            {{t.planTimeWeek?t.planTimeWeek:null}} <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" ng-click="changeWeek($event)">
                             <li data-value="0"><a href="javascript:void(0);">周一</a></li>
@@ -42,7 +42,7 @@
                     <!--<input type="text" class="form-control" ng-model="t.percent">-->
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{t.percent?t.percent:"100%"}} <span class="caret"></span>
+                            {{t.percent?t.percent:null}} <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" ng-click="changePercent($event)">
                             <li><a href="javascript:void(0);">10%</a></li>
@@ -62,7 +62,7 @@
                     <!--<input type="text" class="form-control" ng-model="t.doneTime">-->
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{t.doneWeek?t.doneWeek:"周五"}} <span class="caret"></span>
+                            {{t.doneWeek?t.doneWeek:null}} <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" ng-click="changeDoneWeek($event)">
                             <li data-value="0"><a href="javascript:void(0);">周一</a></li>
@@ -109,7 +109,7 @@
                     <!--<input type="text" class="form-control" ng-model="e.doneTime">-->
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{e.doneWeekText?e.doneWeekText:"周五"}} <span class="caret"></span>
+                            {{e.doneWeekText?e.doneWeekText:null}} <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" ng-click="changeExtraWeek($event)">
                             <li data-value="0"><a href="javascript:void(0);">周一</a></li>
@@ -149,7 +149,7 @@
                     <!--<input type="text" class="form-control" ng-model="p.planTime">-->
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{p.planWeekText?p.planWeekText:"周五"}}<span class="caret"></span>
+                            {{p.planWeekText?p.planWeekText:null}}<span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" ng-click="changePlanWeek($event)">
                             <li data-value="0"><a href="javascript:void(0);">周一</a></li>
