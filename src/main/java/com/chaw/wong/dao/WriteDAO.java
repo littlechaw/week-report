@@ -31,7 +31,7 @@ public class WriteDAO {
         String planTime = ((Map) report).get("planTime").toString();
         String percent = ((Map) report).get("percent").toString();
         String doneTime = ((Map) report).get("doneTime").toString();
-        String remark = ((Map) report).get("remark").toString();
+        String remark = (String) ((Map) report).get("remark");
         String sql = "insert into report_done(userId,content,planTime,percent,doneTime,remark,weekNum) " +
                 "values('" + id + "','" + content + "','" + planTime + "','" + percent + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
@@ -46,7 +46,7 @@ public class WriteDAO {
         String content = ((Map) report).get("content").toString();
         String usedTime = ((Map) report).get("usedTime").toString();
         String doneTime = ((Map) report).get("doneTime").toString();
-        String remark = ((Map) report).get("remark").toString();
+        String remark = (String) ((Map) report).get("remark");
         String sql = "insert into report_extra(userId,content,usedTime,doneTime,remark,weekNum) " +
                 "values('" + id + "','" + content + "','" + usedTime + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
@@ -60,7 +60,7 @@ public class WriteDAO {
     public Boolean insertPlan(String id, Object report, int weekNum) {
         String content = ((Map) report).get("content").toString();
         String planTime = ((Map) report).get("planTime").toString();
-        String remark = ((Map) report).get("remark").toString();
+        String remark = (String) ((Map) report).get("remark");
         String sql = "insert into report_plan(userId,content,planTime,remark,weekNum) " +
                 "values('" + id + "','" + content + "','" + planTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
