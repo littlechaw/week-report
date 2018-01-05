@@ -64,8 +64,12 @@
     mainApp.controller("writeCtrl", function ($scope, $http) {
         $scope.$on('$viewContentLoaded', function () {
             $scope.formData = {};
-            $scope.formData.extraObj = [{}];
-            $scope.formData.planObj = [{}];
+            $scope.formData.extraObj = [{
+                content: null
+            }];
+            $scope.formData.planObj = [{
+                content: null
+            }];
             $scope.changeWeek = function (e) {
                 var link = $(e.target).closest("li");
                 var planTimeWeekText = link.text();
@@ -107,7 +111,29 @@
                 var index = link.parent().parent().parent().parent().attr("data-index");
                 $scope.formData.planObj[index].planWeekText = planWeekText;
                 $scope.formData.planObj[index].planTime = $scope.timeTree[planWeekNum];
-            }
+            };
+
+            $scope.addDone = function () {
+                var num = $scope.formData.doneObj.length;
+                $scope.formData.doneObj[num] = {
+                    content: null,
+                    planTime: null
+                };
+            };
+
+            $scope.addExtra = function () {
+                var num = $scope.formData.extraObj.length;
+                $scope.formData.extraObj[num] = {
+                    content: null,
+                };
+            };
+
+            $scope.addPlan = function () {
+                var num = $scope.formData.planObj.length;
+                $scope.formData.planObj[num] = {
+                    content: null,
+                };
+            };
 
             $http({
                 url: "get/getDayinWeek",
@@ -173,12 +199,6 @@
                 }
                 console.error(response);
             });
-        };
-        $scope.addExtra = function () {
-
-        };
-        $scope.addNext = function () {
-
         };
     });
     mainApp.controller("recordCtrl", function ($scope, $http) {

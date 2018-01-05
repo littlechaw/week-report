@@ -17,6 +17,9 @@
             <div class="col-xs-3 text-center">
                 备注
             </div>
+            <div class="col-xs-1 text-center">
+                <span class="addSomething" ng-click="addDone()">添加</span>
+            </div>
         </div>
         <div ng-repeat="t in formData.doneObj track by $index">
             <div class="row tableContent" data-index="{{$index}}">
@@ -96,6 +99,9 @@
             <div class="col-xs-3 text-center">
                 备注
             </div>
+            <div class="col-xs-1 text-center">
+                <span class="addSomething" ng-click="addExtra()">添加</span>
+            </div>
         </div>
         <div ng-repeat="e in formData.extraObj track by $index">
             <div class="row tableContent" data-index="{{$index}}">
@@ -138,6 +144,9 @@
             </div>
             <div class="col-xs-3 text-center">
                 备注
+            </div>
+            <div class="col-xs-1 text-center">
+                <span class="addSomething" ng-click="addPlan()">添加</span>
             </div>
         </div>
         <div ng-repeat="p in formData.planObj track by $index">
