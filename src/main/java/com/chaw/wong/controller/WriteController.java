@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/")
@@ -42,6 +40,26 @@ public class WriteController {
         for (int i = 1; i <= 7; i++) {
             cal.set(Calendar.DAY_OF_MONTH, date + i - n);
             result.add(sdf.format(cal.getTime()));
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "get/getDayinNextWeek", method = {RequestMethod.GET, RequestMethod.POST})
+    public List getDayinNextWeek() {
+        List result = new ArrayList();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = getWeekDays(1);
+        try {
+            for (int i = 0; i < 7; i++) {
+                Calendar cd = Calendar.getInstance();
+                cd.setTime(sdf.parse(date));
+                cd.add(Calendar.DATE, i);
+                String riqi = sdf.format(cd.getTime());
+                result.add(i, riqi);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return result;
     }
@@ -75,4 +93,36 @@ public class WriteController {
         String id = ((User) session.getAttribute("userInfo")).getUserId();
         return writeService.selectLastWeek(id, weekNum);
     }
+
+    private static String getWeekDays(int i) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        // getTimeInterval(sdf);
+
+        Calendar calendar1 = Calendar.getInstance();
+        // 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
+        calendar1.setFirstDayOfWeek(Calendar.MONDAY);
+
+        // 判断要计算的日期是否是周日，如果是则减一天计算周六的，否则会出问题，计算到下一周去了
+        int dayOfWeek = calendar1.get(Calendar.DAY_OF_WEEK);// 获得当前日期是一个星期的第几天
+        if (1 == dayOfWeek) {
+            calendar1.add(Calendar.DAY_OF_MONTH, -1);
+        }
+
+        // 获得当前日期是一个星期的第几天
+        int day = calendar1.get(Calendar.DAY_OF_WEEK);
+
+        //获取当前日期前（下）x周同星几的日期
+        calendar1.add(Calendar.DATE, 7 * i);
+
+        calendar1.add(Calendar.DATE, calendar1.getFirstDayOfWeek() - day);
+
+
+        String beginDate = sdf.format(calendar1.getTime());
+//        calendar1.add(Calendar.DATE, 6);
+
+//        String endDate = sdf.format(calendar1.getTime());
+
+        return beginDate;
+    }
+
 }

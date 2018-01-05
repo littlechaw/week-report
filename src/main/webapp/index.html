@@ -110,7 +110,7 @@
                 var planWeekNum = link.attr("data-value");
                 var index = link.parent().parent().parent().parent().attr("data-index");
                 $scope.formData.planObj[index].planWeekText = planWeekText;
-                $scope.formData.planObj[index].planTime = $scope.timeTree[planWeekNum];
+                $scope.formData.planObj[index].planTime = $scope.nextTimeTree[planWeekNum];
             };
 
             $scope.addDone = function () {
@@ -141,6 +141,17 @@
             }).then(function onSuccess(data) {
                 if (data && data.data) {
                     $scope.timeTree = data.data;
+                }
+            }).catch(function onError(e) {
+                console.info(e);
+            });
+
+            $http({
+                url: "get/getDayinNextWeek",
+                method: "POST",
+            }).then(function onSuccess(data) {
+                if (data && data.data) {
+                    $scope.nextTimeTree = data.data;
                 }
             }).catch(function onError(e) {
                 console.info(e);
