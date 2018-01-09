@@ -40,6 +40,10 @@ public class WriteService {
         return true;
     }
 
+    public Map getAllReport(String team,int weekNum){
+        return writeDAO.getAllReport(team,weekNum);
+    }
+
     public Object selectLastWeek(String id, int weekNum) {
         return writeDAO.selectLastWeek(id, weekNum);
     }

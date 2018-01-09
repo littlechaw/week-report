@@ -22,6 +22,17 @@ public class WriteController {
     @Autowired
     private WriteService writeService;
 
+    @ResponseBody
+    @RequestMapping(value = "get/getAllReport", method = {RequestMethod.POST, RequestMethod.GET})
+    public Map getAllReport(@RequestBody String team) {
+        Calendar c = Calendar.getInstance();
+        int weekNum = c.get(Calendar.WEEK_OF_YEAR);
+        if (team == null) {
+            team = "1";
+        }
+        return writeService.getAllReport(team, weekNum-1);
+    }
+
 
     @ResponseBody
     @RequestMapping(value = "get/getDayinWeek", method = {RequestMethod.POST, RequestMethod.GET})

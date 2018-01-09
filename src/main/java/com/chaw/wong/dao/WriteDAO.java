@@ -76,9 +76,9 @@ public class WriteDAO {
         String hql1 = "from PlanWeekReport where weekNum = ? and userId=?";
         String hql2 = "from DoneWeekReport where weekNum = ? and userId=?";
         String hql3 = "from ExtraWeekReport where weekNum = ? and userId=?";
-        List<PlanWeekReport> res1 = getSession().createQuery(hql1).setParameter(0, weekNum + 1).setParameter(1, id).list();
-        List<DoneWeekReport> res2 = getSession().createQuery(hql2).setParameter(0, weekNum).setParameter(1, id).list();
-        List<ExtraWeekReport> res3 = getSession().createQuery(hql3).setParameter(0, weekNum).setParameter(1, id).list();
+        List res1 = getSession().createQuery(hql1).setParameter(0, weekNum + 1).setParameter(1, id).list();
+        List res2 = getSession().createQuery(hql2).setParameter(0, weekNum).setParameter(1, id).list();
+        List res3 = getSession().createQuery(hql3).setParameter(0, weekNum).setParameter(1, id).list();
         Map map = new HashMap();
         map.put("planObj", res1);
         map.put("doneObj", res2);
@@ -90,6 +90,22 @@ public class WriteDAO {
         String hql = "from PlanWeekReport where weekNum = ? and userId=?";
         List<PlanWeekReport> res = getSession().createQuery(hql).setParameter(0, weekNum).setParameter(1, id).list();
         return res;
+    }
+
+    public Map getAllReport(String team, int weekNum) {
+        Map result = new HashMap();
+        int nextWeekNum = weekNum + 1;
+        String sql1 = "select * from report_done where userId in (select userId from user where team='" + team + "') and weekNum='" + weekNum + "'";
+        String sql2 = "select * from report_extra where userId in (select userId from user where team='" + team + "') and weekNum='" + weekNum + "'";
+        String sql3 = "select * from report_plan where userId in (select userId from user where team='" + team + "') and weekNum='" + nextWeekNum + "'";
+        List<DoneWeekReport> res1 = getSession().createSQLQuery(sql1).addEntity(DoneWeekReport.class).list();
+        List<ExtraWeekReport> res2 = getSession().createSQLQuery(sql2).addEntity(ExtraWeekReport.class).list();
+        List<PlanWeekReport> res3 = getSession().createSQLQuery(sql3).addEntity(PlanWeekReport.class).list();
+
+        result.put("doneObj", res1);
+        result.put("extraObj", res2);
+        result.put("planObj", res3);
+        return result;
     }
 
 }
