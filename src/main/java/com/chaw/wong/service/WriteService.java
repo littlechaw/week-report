@@ -15,7 +15,6 @@ public class WriteService {
     @Autowired
     private WriteDAO writeDAO;
 
-    @Transactional
     public Boolean insertReport(String id, Map report) {
 
         List dwrList = (List) report.get("doneObj");
