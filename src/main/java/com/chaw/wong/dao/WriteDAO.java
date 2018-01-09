@@ -19,11 +19,15 @@ public class WriteDAO {
     private Session session;
 
     private Session getSession() {
-        if (session == null) {
-            session = sessionFactory.openSession();
-        }
-        return session;
+        return this.sessionFactory.openSession();
     }
+
+//    private Session getSession() {
+//        if (session == null) {
+//            session = sessionFactory.openSession();
+//        }
+//        return session;
+//    }
 
     //插入到本周小结
     public Boolean insertDone(String id, Object report, int weekNum) {

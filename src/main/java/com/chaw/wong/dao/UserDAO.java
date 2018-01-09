@@ -15,11 +15,15 @@ public class UserDAO {
     private Session session;
 
     private Session getSession() {
-        if (session == null) {
-            session = sessionFactory.openSession();
-        }
-        return session;
+        return this.sessionFactory.openSession();
     }
+
+//    private Session getSession() {
+//        if (session == null) {
+//            session = sessionFactory.openSession();
+//        }
+//        return session;
+//    }
 
     public User getUserById(User user) {
         User res = (User) getSession().createQuery("from User where userId =? and password = ?").setParameter(0, user.getUserId()).setParameter(1, user.getPassword()).uniqueResult();
