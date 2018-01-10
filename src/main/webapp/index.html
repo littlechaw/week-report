@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Index - 周报</title>
     <link type="favicon" rel="shortcut icon" href="img/favicon.ico"/>
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/parallax-slider.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/parallax-slider.css" rel="stylesheet"/>
     <link href="css/writeReport.css" rel="stylesheet"/>
 
 </head>
-<body>
+<body ng-controller="mainController">
 <header>
     <div class="container">
         <div class="row-fluid">
@@ -24,29 +24,14 @@
                         </a>
                         <div class="nav-collapse collapse">
                             <ul class="nav">
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features<b class="caret"></b></a>
+                                <li class="active dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Home</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="social-icons.html">Social Icons</a></li>
-                                        <li><a href="icons.html">Glyphicons PRO</a></li>
-                                        <li><a href="icons_set2.html">Font Awesome Icons</a></li>
-                                        <li><a href="typography.html">Typography</a></li>
-                                        <li><a href="shortcodes.html">Shortcodes</a></li>
-                                        <li><a href="list-styles.html">List Styles</a></li>
+                                        <li><a href="#/write">写周报</a></li>
+                                        <li><a href="#/record">周报记录</a></li>
+                                        <li><a href="#/daochu" ng-show="isAdmin">周报合集</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="portfolio3.html">3 Columns</a></li>
-                                        <li><a href="portfolio4.html">4 Columns</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -55,16 +40,8 @@
         </div>
     </div>
 </header>
-<div class="container" ng-controller="mainController">
-    <h2>来自渣哥的问候</h2>
-    <ul>
-        <li><a href="#/write">写周报</a></li>
-        <li><a href="#/record">周报记录</a></li>
-        <li><a href="#/daochu" ng-show="isAdmin">周报合集</a></li>
-    </ul>
-
+<div class="container">
     <div ng-view></div>
-
 </div>
 
 
