@@ -1,294 +1,299 @@
-<div class="row-fluid">
-    <div class="title-out"><h3>本周工作小结</h3></div>
-    <div class="tableTop">
-        <div class="span4">
-            <h4>内容</h4>
-        </div>
-        <div class="span1">
-            <h4>计划日期</h4>
-        </div>
-        <div class="span1">
-            <h4>百分比</h4>
-        </div>
-        <div class="span1">
-            <h4>完成日期</h4>
-        </div>
-        <div class="span3">
-            <h4>备注</h4>
-        </div>
-        <div class="span1">
-            <span class="addSomething" ng-click="addDone()"><h4>添加</h4></span>
-        </div>
-    </div>
-
-    <div ng-repeat="t in formData.doneObj track by $index">
-        <div class="tableContent" data-index="{{$index}}">
+<div ng-controller="writeCtrl">
+    <div class="row-fluid">
+        <div class="title-out"><h3>本周工作小结</h3></div>
+        <div class="tableTop">
             <div class="span4">
-                <input type="text" class="form-control span12" ng-model="t.content">
+                <h4>内容</h4>
             </div>
             <div class="span1">
-                <!--<input type="text" class="form-control" ng-model="t.planTime">-->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{t.planTimeWeek?t.planTimeWeek:null}} <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" ng-click="changeWeek($event)">
-                        <li data-value="0"><a href="javascript:void(0);">周一</a></li>
-                        <li data-value="1"><a href="javascript:void(0);">周二</a></li>
-                        <li data-value="2"><a href="javascript:void(0);">周三</a></li>
-                        <li data-value="3"><a href="javascript:void(0);">周四</a></li>
-                        <li data-value="4"><a href="javascript:void(0);">周五</a></li>
-                    </ul>
-                </div>
+                <h4>计划日期</h4>
             </div>
             <div class="span1">
-                <!--<input type="text" class="form-control" ng-model="t.percent">-->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{t.percent?t.percent:null}} <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" ng-click="changePercent($event)">
-                        <li><a href="javascript:void(0);">10%</a></li>
-                        <li><a href="javascript:void(0);">20%</a></li>
-                        <li><a href="javascript:void(0);">30%</a></li>
-                        <li><a href="javascript:void(0);">40%</a></li>
-                        <li><a href="javascript:void(0);">50%</a></li>
-                        <li><a href="javascript:void(0);">60%</a></li>
-                        <li><a href="javascript:void(0);">70%</a></li>
-                        <li><a href="javascript:void(0);">80%</a></li>
-                        <li><a href="javascript:void(0);">90%</a></li>
-                        <li><a href="javascript:void(0);">100%</a></li>
-                    </ul>
-                </div>
+                <h4>百分比</h4>
             </div>
             <div class="span1">
-                <!--<input type="text" class="form-control" ng-model="t.doneTime">-->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{t.doneWeek?t.doneWeek:null}} <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" ng-click="changeDoneWeek($event)">
-                        <li data-value="0"><a href="javascript:void(0);">周一</a></li>
-                        <li data-value="1"><a href="javascript:void(0);">周二</a></li>
-                        <li data-value="2"><a href="javascript:void(0);">周三</a></li>
-                        <li data-value="3"><a href="javascript:void(0);">周四</a></li>
-                        <li data-value="4"><a href="javascript:void(0);">周五</a></li>
-                    </ul>
-                </div>
+                <h4>完成日期</h4>
             </div>
             <div class="span3">
-                <input class="span12 form-control" type="text" ng-model="t.remark">
+                <h4>备注</h4>
+            </div>
+            <div class="span1">
+                <span class="addSomething" ng-click="addDone()"><h4>添加</h4></span>
             </div>
         </div>
 
-    </div>
-</div>
-
-<hr/>
-<div class="row-fluid">
-    <div class="title-out"><h3>本周额外任务</h3></div>
-    <div class="tableTop">
-        <div class="span4">
-            <h4>内容</h4>
-        </div>
-        <div class="span1">
-            <h4>投入时间</h4>
-        </div>
-        <div class="span1">
-            <h4>完成日期</h4>
-        </div>
-        <div class="span3">
-            <h4>备注</h4>
-        </div>
-        <div class="span1">
-            <span class="addSomething" ng-click="addExtra()"><h4>添加</h4></span>
-        </div>
-    </div>
-    <div ng-repeat="e in formData.extraObj track by $index">
-        <div class="tableContent" data-index="{{$index}}">
-            <div class="span4">
-                <input type="text" class="form-control span12" ng-model="e.content">
-            </div>
-            <div class="span1">
-                <input type="Number" class="form-control span12" ng-model="e.usedTime">
-            </div>
-            <div class="span1">
-                <!--<input type="text" class="form-control" ng-model="e.doneTime">-->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{e.doneWeekText?e.doneWeekText:null}} <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" ng-click="changeExtraWeek($event)">
-                        <li data-value="0"><a href="javascript:void(0);">周一</a></li>
-                        <li data-value="1"><a href="javascript:void(0);">周二</a></li>
-                        <li data-value="2"><a href="javascript:void(0);">周三</a></li>
-                        <li data-value="3"><a href="javascript:void(0);">周四</a></li>
-                        <li data-value="4"><a href="javascript:void(0);">周五</a></li>
-                    </ul>
+        <div ng-repeat="t in formData.doneObj track by $index">
+            <div class="tableContent" data-index="{{$index}}">
+                <div class="span4">
+                    <input type="text" class="form-control span12" ng-model="t.content">
+                </div>
+                <div class="span1">
+                    <!--<input type="text" class="form-control" ng-model="t.planTime">-->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{t.planTimeWeek?t.planTimeWeek:null}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" ng-click="changeWeek($event)">
+                            <li data-value="0"><a href="javascript:void(0);">周一</a></li>
+                            <li data-value="1"><a href="javascript:void(0);">周二</a></li>
+                            <li data-value="2"><a href="javascript:void(0);">周三</a></li>
+                            <li data-value="3"><a href="javascript:void(0);">周四</a></li>
+                            <li data-value="4"><a href="javascript:void(0);">周五</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span1">
+                    <!--<input type="text" class="form-control" ng-model="t.percent">-->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{t.percent?t.percent:null}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" ng-click="changePercent($event)">
+                            <li><a href="javascript:void(0);">10%</a></li>
+                            <li><a href="javascript:void(0);">20%</a></li>
+                            <li><a href="javascript:void(0);">30%</a></li>
+                            <li><a href="javascript:void(0);">40%</a></li>
+                            <li><a href="javascript:void(0);">50%</a></li>
+                            <li><a href="javascript:void(0);">60%</a></li>
+                            <li><a href="javascript:void(0);">70%</a></li>
+                            <li><a href="javascript:void(0);">80%</a></li>
+                            <li><a href="javascript:void(0);">90%</a></li>
+                            <li><a href="javascript:void(0);">100%</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span1">
+                    <!--<input type="text" class="form-control" ng-model="t.doneTime">-->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{t.doneWeek?t.doneWeek:null}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" ng-click="changeDoneWeek($event)">
+                            <li data-value="0"><a href="javascript:void(0);">周一</a></li>
+                            <li data-value="1"><a href="javascript:void(0);">周二</a></li>
+                            <li data-value="2"><a href="javascript:void(0);">周三</a></li>
+                            <li data-value="3"><a href="javascript:void(0);">周四</a></li>
+                            <li data-value="4"><a href="javascript:void(0);">周五</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span3">
+                    <input class="span12 form-control" type="text" ng-model="t.remark">
                 </div>
             </div>
-            <div class="span3">
-                <input type="text" class="form-control span12" ng-model="e.remark">
-            </div>
-        </div>
-    </div>
-</div>
 
-<hr/>
-<div class="row-fluid">
-    <div class="title-out"><h3>下周计划</h3></div>
-    <div class="tableTop">
-        <div class="span4">
-            <h4>内容</h4>
-        </div>
-        <div class="span1">
-            <h4>计划日期</h4>
-        </div>
-        <div class="span3">
-            <h4>备注</h4>
-        </div>
-        <div class="span1">
-            <span class="addSomething" ng-click="addPlan()"><h4>添加</h4></span>
         </div>
     </div>
-    <div ng-repeat="p in formData.planObj track by $index">
-        <div class="tableContent" data-index="{{$index}}">
+
+    <hr/>
+    <div class="row-fluid">
+        <div class="title-out"><h3>本周额外任务</h3></div>
+        <div class="tableTop">
             <div class="span4">
-                <input type="text" class="form-control span12" ng-model="p.content">
+                <h4>内容</h4>
             </div>
             <div class="span1">
-                <!--<input type="text" class="form-control" ng-model="p.planTime">-->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{p.planWeekText?p.planWeekText:null}}<span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" ng-click="changePlanWeek($event)">
-                        <li data-value="0"><a href="javascript:void(0);">周一</a></li>
-                        <li data-value="1"><a href="javascript:void(0);">周二</a></li>
-                        <li data-value="2"><a href="javascript:void(0);">周三</a></li>
-                        <li data-value="3"><a href="javascript:void(0);">周四</a></li>
-                        <li data-value="4"><a href="javascript:void(0);">周五</a></li>
-                    </ul>
-                </div>
+                <h4>投入时间</h4>
+            </div>
+            <div class="span1">
+                <h4>完成日期</h4>
             </div>
             <div class="span3">
-                <input type="text" class="form-control span12" ng-model="p.remark">
+                <h4>备注</h4>
+            </div>
+            <div class="span1">
+                <span class="addSomething" ng-click="addExtra()"><h4>添加</h4></span>
+            </div>
+        </div>
+        <div ng-repeat="e in formData.extraObj track by $index">
+            <div class="tableContent" data-index="{{$index}}">
+                <div class="span4">
+                    <input type="text" class="form-control span12" ng-model="e.content">
+                </div>
+                <div class="span1">
+                    <input type="Number" class="form-control span12" ng-model="e.usedTime">
+                </div>
+                <div class="span1">
+                    <!--<input type="text" class="form-control" ng-model="e.doneTime">-->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{e.doneWeekText?e.doneWeekText:null}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" ng-click="changeExtraWeek($event)">
+                            <li data-value="0"><a href="javascript:void(0);">周一</a></li>
+                            <li data-value="1"><a href="javascript:void(0);">周二</a></li>
+                            <li data-value="2"><a href="javascript:void(0);">周三</a></li>
+                            <li data-value="3"><a href="javascript:void(0);">周四</a></li>
+                            <li data-value="4"><a href="javascript:void(0);">周五</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span3">
+                    <input type="text" class="form-control span12" ng-model="e.remark">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-
-<div class="row-fluid">
-    <div class="span5">&nbsp;</div>
-    <h1>预&nbsp;&nbsp;览</h1>
-</div>
-<div class="row-fluid">
-    <div class="title-out"><h3>本周工作小结</h3></div>
-    <div class="tableTop">
-        <div class="span4">
-            内容
+    <hr/>
+    <div class="row-fluid">
+        <div class="title-out"><h3>下周计划</h3></div>
+        <div class="tableTop">
+            <div class="span4">
+                <h4>内容</h4>
+            </div>
+            <div class="span1">
+                <h4>计划日期</h4>
+            </div>
+            <div class="span3">
+                <h4>备注</h4>
+            </div>
+            <div class="span1">
+                <span class="addSomething" ng-click="addPlan()"><h4>添加</h4></span>
+            </div>
         </div>
-        <div class="span2">
-            计划日期
-        </div>
-        <div class="span1">
-            百分比
-        </div>
-        <div class="span2">
-            完成日期
-        </div>
-        <div class="span3">
-            备注
+        <div ng-repeat="p in formData.planObj track by $index">
+            <div class="tableContent" data-index="{{$index}}">
+                <div class="span4">
+                    <input type="text" class="form-control span12" ng-model="p.content">
+                </div>
+                <div class="span1">
+                    <!--<input type="text" class="form-control" ng-model="p.planTime">-->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{p.planWeekText?p.planWeekText:null}}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" ng-click="changePlanWeek($event)">
+                            <li data-value="0"><a href="javascript:void(0);">周一</a></li>
+                            <li data-value="1"><a href="javascript:void(0);">周二</a></li>
+                            <li data-value="2"><a href="javascript:void(0);">周三</a></li>
+                            <li data-value="3"><a href="javascript:void(0);">周四</a></li>
+                            <li data-value="4"><a href="javascript:void(0);">周五</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span3">
+                    <input type="text" class="form-control span12" ng-model="p.remark">
+                </div>
+            </div>
         </div>
     </div>
-    <div ng-repeat="t in formData.doneObj track by $index">
-        <div class="tableContent" data-index="{{$index}}">
+
+
+    <div class="row-fluid">
+        <div class="span5">&nbsp;</div>
+        <h1>预&nbsp;&nbsp;览</h1>
+    </div>
+    <div class="row-fluid">
+        <div class="title-out"><h3>本周工作小结</h3></div>
+        <div class="tableTop">
             <div class="span4">
-                {{t.content}}
+                内容
             </div>
             <div class="span2">
-                {{t.planTime}}
+                计划日期
             </div>
             <div class="span1">
-                {{t.percent}}
+                百分比
             </div>
             <div class="span2">
-                {{t.doneTime}}
+                完成日期
             </div>
             <div class="span3">
-                {{t.remark}}
+                备注
             </div>
         </div>
+        <div ng-repeat="t in formData.doneObj track by $index">
+            <div class="tableContent" data-index="{{$index}}">
+                <div class="span4">
+                    {{t.content}}
+                </div>
+                <div class="span2">
+                    {{t.planTime}}
+                </div>
+                <div class="span1">
+                    {{t.percent}}
+                </div>
+                <div class="span2">
+                    {{t.doneTime}}
+                </div>
+                <div class="span3">
+                    {{t.remark}}
+                </div>
+            </div>
 
+        </div>
     </div>
-</div>
 
-<div class="row-fluid">
-    <div class="title-out"><h3>本周额外任务</h3></div>
-    <div class="tableTop">
-        <div class="span4">
-            内容
-        </div>
-        <div class="span1">
-            投入时间
-        </div>
-        <div class="span2">
-            完成日期
-        </div>
-        <div class="span3">
-            备注
-        </div>
-    </div>
-    <div ng-repeat="e in formData.extraObj track by $index">
-        <div class="tableContent">
+    <div class="row-fluid">
+        <div class="title-out"><h3>本周额外任务</h3></div>
+        <div class="tableTop">
             <div class="span4">
-                {{e.content}}
+                内容
             </div>
             <div class="span1">
-                {{e.usedTime}}
+                投入时间
             </div>
             <div class="span2">
-                {{e.doneTime}}
+                完成日期
             </div>
             <div class="span3">
-                {{e.remark}}
+                备注
+            </div>
+        </div>
+        <div ng-repeat="e in formData.extraObj track by $index">
+            <div class="tableContent">
+                <div class="span4">
+                    {{e.content}}
+                </div>
+                <div class="span1">
+                    {{e.usedTime}}
+                </div>
+                <div class="span2">
+                    {{e.doneTime}}
+                </div>
+                <div class="span3">
+                    {{e.remark}}
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="row-fluid">
-    <div class="title-out"><h3>下周计划</h3></div>
-    <div class="tableTop">
-        <div class="span4">
-            内容
-        </div>
-        <div class="span2">
-            计划日期
-        </div>
-        <div class="span3">
-            备注
-        </div>
-    </div>
-    <div ng-repeat="p in formData.planObj track by $index">
-        <div class="tableContent">
+    <div class="row-fluid">
+        <div class="title-out"><h3>下周计划</h3></div>
+        <div class="tableTop">
             <div class="span4">
-                {{p.content}}
+                内容
             </div>
             <div class="span2">
-                {{p.planTime}}
+                计划日期
             </div>
             <div class="span3">
-                {{p.remark}}
+                备注
+            </div>
+        </div>
+        <div ng-repeat="p in formData.planObj track by $index">
+            <div class="tableContent">
+                <div class="span4">
+                    {{p.content}}
+                </div>
+                <div class="span2">
+                    {{p.planTime}}
+                </div>
+                <div class="span3">
+                    {{p.remark}}
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<div class="row-fluid">
-    <div class="text-center">
-        <button class="btn btn-success" ng-click="addReport();">提交周报</button>
+    <div class="row-fluid">
+        <div class="text-center">
+            <button class="btn btn-success" ng-click="addReport();">提交周报</button>
+        </div>
     </div>
+
+
+
 </div>
