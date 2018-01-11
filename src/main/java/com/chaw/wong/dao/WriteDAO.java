@@ -68,7 +68,7 @@ public class WriteDAO {
         String content = ((Map) report).get("content").toString();
         String planTime = ((Map) report).get("planTime").toString();
         String remark = (String) ((Map) report).get("remark");
-        String sql = "insert into report_plan(userId,content,planTime,remark,weekNum) " +
+        String sql = "insert into report_plan(userId,name,content,planTime,remark,weekNum) " +
                 "values('" + id + "','" + name + "','" + content + "','" + planTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
         if (num > 0) {
