@@ -264,6 +264,7 @@
             }).then(function onSuccess(response) {
                 if (response.data) {
                     $scope.reportConle = response.data;
+                    console.info(response.data);
                 } else {
                     alert("网络不太好，去打叫兽");
                 }

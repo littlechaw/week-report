@@ -1,5 +1,5 @@
 <div ng-controller="daochuCtrl">
-    <div class="row-fluid">
+    <div class="row-fluid clear">
         <h2>本周工作小结</h2>
         <div class="tableTop">
             <div class="span1">
@@ -21,7 +21,7 @@
                 备注
             </div>
         </div>
-        <div ng-repeat="t in reportConle.doneObj track by $index">
+        <div class="clear" ng-repeat="t in reportConle.doneObj track by $index">
             <div class="tableContent" data-index="{{$index}}">
                 <div class="span1">
                     {{t.name}}
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="row-fluid">
+    <div class="row-fluid clear">
         <h2>本周额外任务</h2>
         <div class="tableTop">
             <div class="span1">
@@ -65,7 +65,7 @@
                 备注
             </div>
         </div>
-        <div ng-repeat="e in reportConle.extraObj track by $index">
+        <div class="clear" ng-repeat="e in reportConle.extraObj track by $index">
             <div class="tableContent">
                 <div class="span1">
                     {{e.name}}
@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    <div class="row-fluid">
+    <div class="row-fluid clear">
         <h2>下周计划</h2>
         <div class="tableTop">
             <div class="span1">
@@ -102,7 +102,7 @@
                 备注
             </div>
         </div>
-        <div ng-repeat="p in reportConle.planObj track by $index">
+        <div class="clear" ng-repeat="p in reportConle.planObj track by $index">
             <div class="tableContent">
                 <div class="span1">
                     {{p.name}}
