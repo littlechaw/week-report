@@ -80,20 +80,20 @@
   }
 }
 
-@media (max-width: 767px) {
-  .hidden-desktop {
-    display: inherit !important;
-  }
-  .visible-desktop {
-    display: none !important;
-  }
-  .visible-phone {
-    display: inherit !important;
-  }
-  .hidden-phone {
-    display: none !important;
-  }
-}
+/*@media (max-width: 767px) {*/
+  /*.hidden-desktop {*/
+    /*display: inherit !important;*/
+  /*}*/
+  /*.visible-desktop {*/
+    /*display: none !important;*/
+  /*}*/
+  /*.visible-phone {*/
+    /*display: inherit !important;*/
+  /*}*/
+  /*.hidden-phone {*/
+    /*display: none !important;*/
+  /*}*/
+/*}*/
 
 @media (min-width: 1200px) {
   .row {
