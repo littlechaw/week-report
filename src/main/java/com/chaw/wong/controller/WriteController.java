@@ -30,7 +30,7 @@ public class WriteController {
         if (team == null) {
             team = "1";
         }
-        return writeService.getAllReport(team, weekNum - 1);
+        return writeService.getAllReport(team, weekNum);
     }
 
 
