@@ -256,13 +256,14 @@
     mainApp.controller("daochuCtrl", function ($scope, $http) {
         $scope.$on('$viewContentLoaded', function () {
             $scope.team = 4;
+            $scope.reportConle;
             $http({
                 url: "get/getAllReport",
                 method: "POST",
                 data: $scope.team
             }).then(function onSuccess(response) {
                 if (response.data) {
-                    console.info(response.data);
+                    $scope.reportConle = response.data;
                 } else {
                     alert("网络不太好，去打叫兽");
                 }

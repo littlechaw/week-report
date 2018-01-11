@@ -10,6 +10,7 @@ import javax.persistence.Table;
 public class ExtraWeekReport {
     private int id;
     private String userId;
+    private String name;
     private String content;
     private String usedTime;
     private String doneTime;
@@ -34,6 +35,15 @@ public class ExtraWeekReport {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Column(name = "content")

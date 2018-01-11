@@ -3,8 +3,11 @@ package com.chaw.wong.dao;
 import com.chaw.wong.entity.DoneWeekReport;
 import com.chaw.wong.entity.ExtraWeekReport;
 import com.chaw.wong.entity.PlanWeekReport;
+import com.chaw.wong.entity.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -30,14 +33,14 @@ public class WriteDAO {
 //    }
 
     //插入到本周小结
-    public Boolean insertDone(String id, Object report, int weekNum) {
+    public Boolean insertDone(String id, String name, Object report, int weekNum) {
         String content = ((Map) report).get("content").toString();
         String planTime = ((Map) report).get("planTime").toString();
         String percent = ((Map) report).get("percent").toString();
         String doneTime = ((Map) report).get("doneTime").toString();
         String remark = (String) ((Map) report).get("remark");
-        String sql = "insert into report_done(userId,content,planTime,percent,doneTime,remark,weekNum) " +
-                "values('" + id + "','" + content + "','" + planTime + "','" + percent + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
+        String sql = "insert into report_done(userId,name,content,planTime,percent,doneTime,remark,weekNum) " +
+                "values('" + id + "','" + name + "','" + content + "','" + planTime + "','" + percent + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
         if (num > 0) {
             return true;
@@ -46,13 +49,13 @@ public class WriteDAO {
         }
     }
 
-    public Boolean insertExtra(String id, Object report, int weekNum) {
+    public Boolean insertExtra(String id, String name, Object report, int weekNum) {
         String content = ((Map) report).get("content").toString();
         String usedTime = ((Map) report).get("usedTime").toString();
         String doneTime = ((Map) report).get("doneTime").toString();
         String remark = (String) ((Map) report).get("remark");
-        String sql = "insert into report_extra(userId,content,usedTime,doneTime,remark,weekNum) " +
-                "values('" + id + "','" + content + "','" + usedTime + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
+        String sql = "insert into report_extra(userId,name,content,usedTime,doneTime,remark,weekNum) " +
+                "values('" + id + "','" + name + "','" + content + "','" + usedTime + "','" + doneTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
         if (num > 0) {
             return true;
@@ -61,12 +64,12 @@ public class WriteDAO {
         }
     }
 
-    public Boolean insertPlan(String id, Object report, int weekNum) {
+    public Boolean insertPlan(String id, String name, Object report, int weekNum) {
         String content = ((Map) report).get("content").toString();
         String planTime = ((Map) report).get("planTime").toString();
         String remark = (String) ((Map) report).get("remark");
         String sql = "insert into report_plan(userId,content,planTime,remark,weekNum) " +
-                "values('" + id + "','" + content + "','" + planTime + "','" + remark + "'," + weekNum + ")";
+                "values('" + id + "','" + name + "','" + content + "','" + planTime + "','" + remark + "'," + weekNum + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
         if (num > 0) {
             return true;
@@ -99,16 +102,18 @@ public class WriteDAO {
     public Map getAllReport(String team, int weekNum) {
         Map result = new HashMap();
         int nextWeekNum = weekNum + 1;
+        String sql = "select userId,name from user";
         String sql1 = "select * from report_done where userId in (select userId from user where team='" + team + "') and weekNum='" + weekNum + "'";
         String sql2 = "select * from report_extra where userId in (select userId from user where team='" + team + "') and weekNum='" + weekNum + "'";
         String sql3 = "select * from report_plan where userId in (select userId from user where team='" + team + "') and weekNum='" + nextWeekNum + "'";
-        List<DoneWeekReport> res1 = getSession().createSQLQuery(sql1).addEntity(DoneWeekReport.class).list();
-        List<ExtraWeekReport> res2 = getSession().createSQLQuery(sql2).addEntity(ExtraWeekReport.class).list();
-        List<PlanWeekReport> res3 = getSession().createSQLQuery(sql3).addEntity(PlanWeekReport.class).list();
+        List<DoneWeekReport> res1 = getSession().createSQLQuery(sql1).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+        List<ExtraWeekReport> res2 = getSession().createSQLQuery(sql2).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+        List<PlanWeekReport> res3 = getSession().createSQLQuery(sql3).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
 
         result.put("doneObj", res1);
         result.put("extraObj", res2);
         result.put("planObj", res3);
+
         return result;
     }
 

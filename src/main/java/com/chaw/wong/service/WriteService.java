@@ -15,7 +15,7 @@ public class WriteService {
     @Autowired
     private WriteDAO writeDAO;
 
-    public Boolean insertReport(String id, Map report) {
+    public Boolean insertReport(String id, String name, Map report) {
 
         List dwrList = (List) report.get("doneObj");
         List ewrList = (List) report.get("extraObj");
@@ -25,23 +25,23 @@ public class WriteService {
 
         for (Object d : dwrList) {
             if (((Map) d).get("content") != null)
-                writeDAO.insertDone(id, d, weekNum);
+                writeDAO.insertDone(id, name, d, weekNum);
         }
         for (Object e : ewrList) {
             if (((Map) e).get("content") != null)
-                writeDAO.insertExtra(id, e, weekNum);
+                writeDAO.insertExtra(id, name, e, weekNum);
         }
         for (Object p : pwrList) {
             if (((Map) p).get("content") != null)
-                writeDAO.insertPlan(id, p, weekNum + 1);
+                writeDAO.insertPlan(id, name, p, weekNum + 1);
         }
 
 
         return true;
     }
 
-    public Map getAllReport(String team,int weekNum){
-        return writeDAO.getAllReport(team,weekNum);
+    public Map getAllReport(String team, int weekNum) {
+        return writeDAO.getAllReport(team, weekNum);
     }
 
     public Object selectLastWeek(String id, int weekNum) {

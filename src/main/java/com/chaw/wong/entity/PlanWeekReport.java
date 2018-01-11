@@ -10,9 +10,9 @@ import javax.persistence.Table;
 public class PlanWeekReport {
     private int id;
     private String userId;
+    private String name;
     private String content;
     private String planTime;
-    private String planTimeWeek;
     private String remark;
     private int weekNum;
 
@@ -35,6 +35,14 @@ public class PlanWeekReport {
         this.userId = userId;
     }
 
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Column(name = "content")
     public String getContent() {

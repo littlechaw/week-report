@@ -30,7 +30,7 @@ public class WriteController {
         if (team == null) {
             team = "1";
         }
-        return writeService.getAllReport(team, weekNum-1);
+        return writeService.getAllReport(team, weekNum - 1);
     }
 
 
@@ -80,7 +80,8 @@ public class WriteController {
     public Boolean insertThis(@RequestBody Map report, HttpServletRequest request) {
         HttpSession session = request.getSession();
         String id = ((User) session.getAttribute("userInfo")).getUserId();
-        return writeService.insertReport(id, report);
+        String name = ((User) session.getAttribute("userInfo")).getName();
+        return writeService.insertReport(id, name, report);
 
     }
 
