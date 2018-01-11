@@ -724,11 +724,11 @@ header {
     height: 100%;
 }
 
-@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
-    .flex-video {
-        padding-top: 0;
-    }
-}
+/*@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {*/
+    /*.flex-video {*/
+        /*padding-top: 0;*/
+    /*}*/
+/*}*/
 
 /* Flexslider
 =================================================================== */
@@ -2997,122 +2997,122 @@ li.current {
     background-color: #fbfbf9 \9;
 }
 
-/* Higher than 960 (desktop devices)
-====================================================================== */
-@media (min-width: 1200px) {
+/*!* Higher than 960 (desktop devices)*/
+/*====================================================================== *!*/
+/*@media (min-width: 1200px) {*/
 
-    .navbar-inner > .btn-overlay {
-        display: none !important;
-    }
+    /*.navbar-inner > .btn-overlay {*/
+        /*display: none !important;*/
+    /*}*/
 
-}
+/*}*/
 
-/* Higher than 960 (desktop devices)
-====================================================================== */
-@media only screen and (min-width: 980px) and (max-width: 1199px) {
+/*!* Higher than 960 (desktop devices)*/
+/*====================================================================== *!*/
+/*@media only screen and (min-width: 980px) and (max-width: 1199px) {*/
 
-    .navbar-inner > .btn-overlay {
-        display: none !important;
-    }
+    /*.navbar-inner > .btn-overlay {*/
+        /*display: none !important;*/
+    /*}*/
 
-    .navbar .nav > li > a {
-        padding: 12px 15px;
-        padding: 12px 15px \9;
-    }
+    /*.navbar .nav > li > a {*/
+        /*padding: 12px 15px;*/
+        /*padding: 12px 15px \9;*/
+    /*}*/
 
-    .search input:focus {
-        width: 120px;
+    /*.search input:focus {*/
+        /*width: 120px;*/
 
-    }
+    /*}*/
 
-}
+/*}*/
 
 /* Tablet Portrait (devices and browsers)
 ====================================================================== */
-@media only screen and (min-width: 768px) and (max-width: 979px) {
+/*@media only screen and (min-width: 768px) and (max-width: 979px) {*/
 
-    .navbar,
-    .navbar-inner,
-    .nav,
-    .navbar-inverse {
-        float: none !important;
-    }
+    /*.navbar,*/
+    /*.navbar-inner,*/
+    /*.nav,*/
+    /*.navbar-inverse {*/
+        /*float: none !important;*/
+    /*}*/
 
-    .navbar .nav > li > a {
-        padding: 5px 20px;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-    }
+    /*.navbar .nav > li > a {*/
+        /*padding: 5px 20px;*/
+        /*-webkit-transition: all 0.3s ease-in-out;*/
+        /*-moz-transition: all 0.3s ease-in-out;*/
+        /*-o-transition: all 0.3s ease-in-out;*/
+        /*-ms-transition: all 0.3s ease-in-out;*/
+        /*transition: all 0.3s ease-in-out;*/
+    /*}*/
 
-    .search input:focus {
-        width: 170px;
-        margin-left: -100px;
+    /*.search input:focus {*/
+        /*width: 170px;*/
+        /*margin-left: -100px;*/
 
-    }
+    /*}*/
 
-}
+/*}*/
 
-/* All Mobile Sizes (devices and browser)
-====================================================================== */
-@media only screen and (max-width: 767px) {
+/*!* All Mobile Sizes (devices and browser)*/
+/*====================================================================== *!*/
+/*@media only screen and (max-width: 767px) {*/
 
-    .navbar .nav > li > a {
-        color: #666;
-        border-top: 4px solid transparent;
-        text-shadow: none;
-        font-size: 12px;
-        padding: 5px 20px;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
+    /*.navbar .nav > li > a {*/
+        /*color: #666;*/
+        /*border-top: 4px solid transparent;*/
+        /*text-shadow: none;*/
+        /*font-size: 12px;*/
+        /*padding: 5px 20px;*/
+        /*-webkit-transition: all 0.3s ease-in-out;*/
+        /*-moz-transition: all 0.3s ease-in-out;*/
+        /*-o-transition: all 0.3s ease-in-out;*/
+        /*-ms-transition: all 0.3s ease-in-out;*/
+        /*transition: all 0.3s ease-in-out;*/
 
-    }
+    /*}*/
 
-    #contact-details {
-        text-align: center;
-        float: left;
-    }
+    /*#contact-details {*/
+        /*text-align: center;*/
+        /*float: left;*/
+    /*}*/
 
-    #filters,
-    #portfolio-navi {
-        position: relative;
-        text-align: left;
-        display: block;
-        margin: 0 0 23px 0;
-    }
+    /*#filters,*/
+    /*#portfolio-navi {*/
+        /*position: relative;*/
+        /*text-align: left;*/
+        /*display: block;*/
+        /*margin: 0 0 23px 0;*/
+    /*}*/
 
-    #portfolio-navi {
-        margin: -5px 0 25px 0;
-    }
+    /*#portfolio-navi {*/
+        /*margin: -5px 0 25px 0;*/
+    /*}*/
 
-    .portfolio-item {
-        margin: 5px 0 25px 0 !important;
-    }
+    /*.portfolio-item {*/
+        /*margin: 5px 0 25px 0 !important;*/
+    /*}*/
 
-}
+/*}*/
 
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers)
-====================================================================== */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+/*!* Mobile Landscape Size to Tablet Portrait (devices and browsers)*/
+/*====================================================================== *!*/
+/*@media only screen and (min-width: 480px) and (max-width: 767px) {*/
 
-    body {
-        padding-bottom: 20px;
-    }
+    /*body {*/
+        /*padding-bottom: 20px;*/
+    /*}*/
 
-}
+/*}*/
 
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
-=================================================================== */
-@media only screen and (max-width: 479px) {
+/*!* Mobile Portrait Size to Mobile Landscape Size (devices and browsers)*/
+/*=================================================================== *!*/
+/*@media only screen and (max-width: 479px) {*/
 
-    body {
-        padding-bottom: 20px;
-    }
+    /*body {*/
+        /*padding-bottom: 20px;*/
+    /*}*/
 
-}
+/*}*/
 
