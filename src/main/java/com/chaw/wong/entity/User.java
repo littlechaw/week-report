@@ -14,6 +14,8 @@ public class User {
     private String name;
     private int team;
     private int level;
+    private String email;
+    private short status;
 
     @Id
     @Column(name="userId",nullable = false,unique = true)
@@ -59,5 +61,23 @@ public class User {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    @Column(name="email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Column(name="status")
+    public short getStatus() {
+        return status;
+    }
+
+    public void setStatus(short status) {
+        this.status = status;
     }
 }
