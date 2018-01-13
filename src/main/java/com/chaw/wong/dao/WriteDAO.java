@@ -19,7 +19,6 @@ import java.util.Map;
 public class WriteDAO {
     @Resource
     private SessionFactory sessionFactory;
-    private Session session;
 
     private Session getSession() {
         return this.sessionFactory.getCurrentSession();
