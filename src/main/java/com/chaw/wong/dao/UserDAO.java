@@ -15,7 +15,7 @@ public class UserDAO {
     private Session session;
 
     private Session getSession() {
-        return this.sessionFactory.openSession();
+        return this.sessionFactory.getCurrentSession();
     }
 
 //    private Session getSession() {
