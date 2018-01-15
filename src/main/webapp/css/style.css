@@ -3,6 +3,11 @@ body {
     background: #ffffff;
 }
 
+hr {
+    width: 100%;
+    border-bottom: dashed;
+}
+
 .noPadding {
     padding: 0px;
 }

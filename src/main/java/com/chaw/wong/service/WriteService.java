@@ -23,17 +23,17 @@ public class WriteService {
         List pwrList = (List) report.get("planObj");
         Calendar c = Calendar.getInstance();
         int weekNum = c.get(Calendar.WEEK_OF_YEAR);
-
+        writeDAO.deleteReport(id, weekNum);
         for (Object d : dwrList) {
-            if (((Map) d).get("content") != null)
+            if (((Map) d).get("content") != null && ((Map) d).get("content") != "")
                 writeDAO.insertDone(id, name, d, weekNum);
         }
         for (Object e : ewrList) {
-            if (((Map) e).get("content") != null)
+            if (((Map) e).get("content") != null && ((Map) e).get("content") != "")
                 writeDAO.insertExtra(id, name, e, weekNum);
         }
         for (Object p : pwrList) {
-            if (((Map) p).get("content") != null)
+            if (((Map) p).get("content") != null && ((Map) p).get("content") != "")
                 writeDAO.insertPlan(id, name, p, weekNum + 1);
         }
 
