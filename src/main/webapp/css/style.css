@@ -3,12 +3,33 @@ body {
     background: #ffffff;
 }
 
-.tableTop{
+.noPadding {
+    padding: 0px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.tableTop {
 
 }
 
-.tableTop div{
+.tableTop div {
     overflow: hidden;
-    text-overflow:ellipsis;
+    /*text-overflow: ellipsis;*/
     white-space: nowrap;
 }
+
+.tableTop .addSomething {
+    cursor: pointer;
+}
+
+.form-margintop-ten {
+    margin-top: 10px;
+}
+
