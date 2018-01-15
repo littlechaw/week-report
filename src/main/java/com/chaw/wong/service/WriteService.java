@@ -15,6 +15,7 @@ public class WriteService {
     @Autowired
     private WriteDAO writeDAO;
 
+    @Transactional
     public Boolean insertReport(String id, String name, Map report) {
 
         List dwrList = (List) report.get("doneObj");
@@ -40,14 +41,17 @@ public class WriteService {
         return true;
     }
 
+    @Transactional
     public Map getAllReport(String team, int weekNum) {
         return writeDAO.getAllReport(team, weekNum);
     }
 
+    @Transactional
     public Object selectLastWeek(String id, int weekNum) {
         return writeDAO.selectLastWeek(id, weekNum);
     }
 
+    @Transactional
     public List<PlanWeekReport> getByWeekNum(int weekNum, String id) {
         return writeDAO.getByWeekNum(weekNum, id);
     }

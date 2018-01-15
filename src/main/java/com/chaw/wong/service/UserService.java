@@ -18,6 +18,7 @@ public class UserService {
         return res;
     }
 
+    @Transactional
     public Boolean insertSomeData(User user){
 
         return userDAO.insertSomeData(user);
