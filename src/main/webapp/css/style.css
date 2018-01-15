@@ -1,0 +1,14 @@
+@charset "utf-8";
+body {
+    background: #ffffff;
+}
+
+.tableTop{
+
+}
+
+.tableTop div{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}

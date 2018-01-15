@@ -5,33 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Index - 周报</title>
     <link type="favicon" rel="shortcut icon" href="img/favicon.ico"/>
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="mainController">
-<header>
+<header class="navbar navbar-static-top bs-docs-nav" id="top">
     <div class="container">
-        <div class="row-fluid">
-            <div class="navigation">
-                <div class="navbar navbar-inverse span9">
-                    <div class="navbar-inner">
-                        <div class="nav-collapse collapse">
-                            <ul class="nav">
-                                <li class="active dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#/write">写周报</a></li>
-                                        <li><a href="#/record">周报记录</a></li>
-                                        <li><a href="#/daochu" ng-show="isAdmin">周报合集</a></li>
-                                    </ul>
-                                </li>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#/write">叫兽</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">周报 <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/write">写周报</a></li>
+                                <li><a href="#/record">周报记录</a></li>
+                                <li><a href="#/daochu" ng-show="isAdmin">周报合集</a></li>
                             </ul>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </nav>
     </div>
 </header>
+
+
 <div class="container">
     <div id="wrapper" ng-view>
 
