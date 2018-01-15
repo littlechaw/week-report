@@ -3,8 +3,6 @@ package com.chaw.wong.dao;
 import com.chaw.wong.entity.DoneWeekReport;
 import com.chaw.wong.entity.ExtraWeekReport;
 import com.chaw.wong.entity.PlanWeekReport;
-import com.chaw.wong.entity.User;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
@@ -24,7 +22,7 @@ public class WriteDAO {
         return this.sessionFactory.getCurrentSession();
     }
 
-//    private Session getSession() {
+    //    private Session getSession() {
 //        if (session == null) {
 //            session = sessionFactory.openSession();
 //        }
