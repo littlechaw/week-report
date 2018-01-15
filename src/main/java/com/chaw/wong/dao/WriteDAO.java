@@ -77,7 +77,6 @@ public class WriteDAO {
 
     //删除本周重复提交的周报
     public void deleteReport(String id, int weekNum) {
-        getSession().createQuery("delete from PlanWeekReport where userId=? and weekNum=?").setParameter(0, id).setParameter(1, weekNum).executeUpdate();
         getSession().createQuery("delete from ExtraWeekReport where userId=? and weekNum=?").setParameter(0, id).setParameter(1, weekNum).executeUpdate();
         getSession().createQuery("delete from DoneWeekReport where userId=? and weekNum=?").setParameter(0, id).setParameter(1, weekNum).executeUpdate();
     }
