@@ -10,7 +10,7 @@
             <li data-value="4"><a href="javascript:void(0);">h5</a></li>
         </ul>
     </div>
-    <div class="row clear">
+    <div class="form-group">
         <h2>本周工作小结</h2>
         <div class="tableTop">
             <div class="col-xs-1">
@@ -32,7 +32,7 @@
                 备注
             </div>
         </div>
-        <div class="clear" ng-repeat="t in reportConle.doneObj track by $index">
+        <div class="row" ng-repeat="t in reportConle.doneObj track by $index">
             <div class="tableContent" data-index="{{$index}}">
                 <div class="col-xs-1">
                     {{t.name}}
@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="row clear">
+    <div class="form-group">
         <h2>本周额外任务</h2>
         <div class="tableTop">
             <div class="col-xs-1">
@@ -76,7 +76,7 @@
                 备注
             </div>
         </div>
-        <div class="clear" ng-repeat="e in reportConle.extraObj track by $index">
+        <div class="row" ng-repeat="e in reportConle.extraObj track by $index">
             <div class="tableContent">
                 <div class="col-xs-1">
                     {{e.name}}
@@ -97,7 +97,7 @@
         </div>
     </div>
 
-    <div class="row clear">
+    <div class="form-group">
         <h2>下周计划</h2>
         <div class="tableTop">
             <div class="col-xs-1">
@@ -113,7 +113,7 @@
                 备注
             </div>
         </div>
-        <div class="clear" ng-repeat="p in reportConle.planObj track by $index">
+        <div class="row" ng-repeat="p in reportConle.planObj track by $index">
             <div class="tableContent">
                 <div class="col-xs-1">
                     {{p.name}}
