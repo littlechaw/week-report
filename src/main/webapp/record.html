@@ -33,7 +33,7 @@
                     {{t.doneTime}}
                 </div>
                 <div class="col-xs-3">
-                    {{t.remark}}
+                    {{t.remark?t.remark:""}}
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
                     {{e.doneTime}}
                 </div>
                 <div class="col-xs-3">
-                    {{e.remark}}
+                    {{e.remark?e.remark:""}}
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
                     {{p.planTime}}
                 </div>
                 <div class="col-xs-3">
-                    {{p.remark}}
+                    {{p.remark?p.remark:""}}
                 </div>
             </div>
         </div>

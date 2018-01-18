@@ -217,6 +217,13 @@
             });
         });
         $scope.addReport = function () {
+            for (var temp in $scope.formData) {
+                if (temp.content != null && temp.percent != "100%" && temp.remark == null) {
+                    alert("未100%完成的，请填写备注");
+                    return;
+                }
+            }
+
             $http({
                 url: "write/insertThis",
                 method: "POST",
