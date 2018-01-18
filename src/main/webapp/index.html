@@ -249,7 +249,7 @@
             var planObj = $scope.formData.planObj;
 
             for (var i in doneObj) {
-                if (doneObj[i].content != null && doneObj[i].percent != "100%" && doneObj[i].remark == null) {
+                if (doneObj[i].content != null && doneObj[i].percent != "100%" && (doneObj[i].remark == null || doneObj[i].remark == "")) {
                     dtd.reject("未100%完成的，请填写备注");
                     return dtd;
                 }
