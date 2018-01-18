@@ -32,7 +32,7 @@
                         <!--<input type="text" class="form-control" ng-model="t.planTime">-->
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{t.planTimeWeek?t.planTimeWeek:null}} <span class="caret"></span>
+                                {{t.planTime | whichDay : timeTree}} <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" ng-click="changeWeek($event)">
                                 <li data-value="0"><a href="javascript:void(0);">周一</a></li>

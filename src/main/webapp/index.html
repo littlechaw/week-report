@@ -217,30 +217,61 @@
             });
         });
         $scope.addReport = function () {
-            for (var temp in $scope.formData) {
-                if (temp.content != null && temp.percent != "100%" && temp.remark == null) {
-                    alert("未100%完成的，请填写备注");
-                    return;
+            $.when($scope.dataValid()).done(function (promiseValue) {
+                $http({
+                    url: "write/insertThis",
+                    method: "POST",
+                    data: $scope.formData
+                }).then(function onSuccess(response) {
+                    if (response.data) {
+                        console.info(response.data);
+                        alert("提交成功");
+                    } else {
+                        alert("网络不太好，去打叫兽");
+                    }
+                }).catch(function onError(response) {
+                    if (response.status == 500) {
+                        alert("打死叫兽");
+                    }
+                    console.error(response);
+                });
+            }).fail(function (e) {
+                console.info(e);
+                alert(e);
+            });
+
+        };
+
+        $scope.dataValid = function () {
+            var dtd = $.Deferred();
+            var doneObj = $scope.formData.doneObj;
+            var extraObj = $scope.formData.extraObj;
+            var planObj = $scope.formData.planObj;
+
+            for (var i in doneObj) {
+                if (doneObj[i].content != null && doneObj[i].percent != "100%" && doneObj[i].remark == null) {
+                    dtd.reject("未100%完成的，请填写备注");
+                    return dtd;
+                }
+                if (doneObj[i].content != null && (doneObj[i].percent == null || doneObj[i].planTime == null || doneObj[i].doneTime == null)) {
+                    dtd.reject("请完善周报内容——本周工作小结");
+                    return dtd;
                 }
             }
-
-            $http({
-                url: "write/insertThis",
-                method: "POST",
-                data: $scope.formData
-            }).then(function onSuccess(response) {
-                if (response.data) {
-                    console.info(response.data);
-                    alert("提交成功");
-                } else {
-                    alert("网络不太好，去打叫兽");
+            for (var j in extraObj) {
+                if (extraObj[j].content != null && (extraObj[j].usedTime == null || extraObj[j].doneTime == null)) {
+                    dtd.reject("请完善周报内容——本周额外任务");
+                    return dtd;
                 }
-            }).catch(function onError(response) {
-                if (response.status == 500) {
-                    alert("打死叫兽");
+            }
+            for (var k in planObj) {
+                if (planObj[k].content != null && planObj[k].planTime == null) {
+                    dtd.reject("请完善周报内容——下周计划");
+                    return dtd;
                 }
-                console.error(response);
-            });
+            }
+            dtd.resolve();
+            return dtd;
         };
     });
     mainApp.controller("recordCtrl", function ($scope, $http) {
@@ -311,6 +342,13 @@
             }
         });
 
+    });
+    mainApp.filter("whichDay", function () {
+        return function (text, time) {
+            var num = time.indexOf(text);
+            var weekArr = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
+            return weekArr[num];
+        }
     })
 </script>
 </body>
