@@ -35,7 +35,7 @@ public class UserDAO {
         if (res != null) {
             return false;
         }
-        String sql = "insert into user values('" + user.getUserId() + "','" + user.getPassword() + "','" + user.getName() + "'," + user.getTeam() + "," + user.getLevel() + ")";
+        String sql = "insert into user(userId,password,name,team,level) values('" + user.getUserId() + "','" + user.getPassword() + "','" + user.getName() + "'," + user.getTeam() + "," + user.getLevel() + ")";
         int num = getSession().createSQLQuery(sql).executeUpdate();
         if (num > 0) {
             return true;
