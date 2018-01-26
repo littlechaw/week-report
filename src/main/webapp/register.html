@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link type="favicon" rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link href="css/signcss.css" rel="stylesheet">
+
+</head>
+<body ng-controller="registerCtrl">
+<form class="form-signin">
+    <h2 class="form-signin-heading">Regester</h2>
+    <label for="inputWorkNum" class="sr-only">工号</label>
+    <input type="text" id="inputWorkNum" class="form-control" ng-model="userId" placeholder="工号" required>
+    <label for="inputPassword" class="sr-only">密码</label>
+    <input type="password" id="inputPassword" class="form-control" ng-model="password" placeholder="密码" required>
+    <label for="inputName" class="sr-only">姓名</label>
+    <input type="text" id="inputName" class="form-control" ng-model="name" placeholder="姓名" required>
+    <!--<label for="inputTeam" class="sr-only">团队</label>-->
+    <!--<input type="number" id="inputTeam" class="form-control" ng-model="team" placeholder="1.android 2.ios 3.java 4.h5" required>-->
+    <div class="btn-group">
+        <button type="button" class="btn form-control btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{teamName?teamName:"请选择团队"}}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" ng-click="changeTeam($event)">
+            <li data-value="1"><a href="javascript:void(0);">android</a></li>
+            <li data-value="2"><a href="javascript:void(0);">ios</a></li>
+            <li data-value="3"><a href="javascript:void(0);">java</a></li>
+            <li data-value="4"><a href="javascript:void(0);">h5</a></li>
+        </ul>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block form-margintop-ten" ng-click="regester()">注&nbsp;&nbsp;册</button>
+    <a href="./login.html">去主页</a>
+</form>
+
+
+<script type="text/javascript" src="js/jquery-2-1-3-min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/md5.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script>
+    var app = angular.module('Myapp', []);
+    app.controller('registerCtrl', function ($scope, $http) {
+        $scope.regester = function () {
+            var data = {
+                userId: $scope.userId,
+                password: hex_md5($scope.password),
+                name: $scope.name,
+                team: $scope.team
+            };
+            if (data.team > 5 || data.team == null) {
+                alert("请正确填写团队信息");
+                return;
+            }
+            $http({
+                url: "user/insertSomeData",
+                method: "POST",
+                data: data
+            }).then(function onSuccess(response) {
+                if (response.data) {
+                    window.location.href = "./login.html";
+                } else {
+                    alert("去打叫兽");
+                }
+
+            }).catch(function onError(response) {
+                console.error(response);
+            });
+        };
+        $scope.changeTeam = function (e) {
+            var link = $(e.target).closest("li");
+            var teamName = link.text();
+            var team = link.attr("data-value");
+            $scope.team = team;
+            $scope.teamName = teamName;
+        }
+
+    });
+
+</script>
+</body>
+</html>

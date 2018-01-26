@@ -1,0 +1,108 @@
+<div ng-controller="recordCtrl">
+    <div class="form-group col-xs-12">
+        <h2>本周工作小结</h2>
+        <div class="tableTop">
+            <div class="col-xs-4">
+                内容
+            </div>
+            <div class="col-xs-2 text-center">
+                计划日期
+            </div>
+            <div class="col-xs-1 text-center">
+                百分比
+            </div>
+            <div class="col-xs-2 text-center">
+                完成日期
+            </div>
+            <div class="col-xs-3">
+                备注
+            </div>
+        </div>
+        <div class="row" ng-repeat="t in formData.doneObj track by $index">
+            <div class="tableContent" data-index="{{$index}}">
+                <div class="col-xs-4">
+                    {{t.content}}
+                </div>
+                <div class="col-xs-2 text-center">
+                    {{t.planTime}}
+                </div>
+                <div class="col-xs-1 text-center">
+                    {{t.percent}}
+                </div>
+                <div class="col-xs-2 text-center">
+                    {{t.doneTime}}
+                </div>
+                <div class="col-xs-3">
+                    {{t.remark?t.remark:""}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="form-group col-xs-12">
+        <h2>本周额外任务</h2>
+        <div class="tableTop">
+            <div class="col-xs-4">
+                内容
+            </div>
+            <div class="col-xs-2 text-center">
+                投入时间
+            </div>
+            <div class="col-xs-2 text-center">
+                完成日期
+            </div>
+            <div class="col-xs-3">
+                备注
+            </div>
+        </div>
+        <div class="row" ng-repeat="e in formData.extraObj track by $index">
+            <div class="tableContent">
+                <div class="col-xs-4">
+                    {{e.content}}
+                </div>
+                <div class="col-xs-2 text-center">
+                    {{e.usedTime}}
+                </div>
+                <div class="col-xs-2 text-center">
+                    {{e.doneTime}}
+                </div>
+                <div class="col-xs-3">
+                    {{e.remark?e.remark:""}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="form-group col-xs-12">
+        <h2>下周计划</h2>
+        <div class="tableTop">
+            <div class="col-xs-4">
+                内容
+            </div>
+            <div class="col-xs-2 text-center">
+                计划日期
+            </div>
+            <div class="col-xs-3">
+                备注
+            </div>
+        </div>
+        <div class="row" ng-repeat="p in formData.planObj track by $index">
+            <div class="tableContent">
+                <div class="col-xs-4">
+                    {{p.content}}
+                </div>
+                <div class="col-xs-2 text-center">
+                    {{p.planTime}}
+                </div>
+                <div class="col-xs-3">
+                    {{p.remark?p.remark:""}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

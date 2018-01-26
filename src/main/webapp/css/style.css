@@ -1,0 +1,40 @@
+@charset "utf-8";
+body {
+    background: #ffffff;
+}
+
+hr {
+    width: 100%;
+    border-bottom: dashed;
+}
+
+.noPadding {
+    padding: 0px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.tableTop {
+
+}
+
+.tableTop div {
+    overflow: hidden;
+    /*text-overflow: ellipsis;*/
+    white-space: nowrap;
+}
+
+.tableTop .addSomething {
+    cursor: pointer;
+}
+
+.form-margintop-ten {
+    margin-top: 10px;
+}
+
