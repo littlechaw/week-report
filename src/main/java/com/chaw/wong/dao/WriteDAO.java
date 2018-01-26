@@ -79,6 +79,7 @@ public class WriteDAO {
     public void deleteReport(String id, int weekNum) {
         getSession().createQuery("delete from ExtraWeekReport where userId=? and weekNum=?").setParameter(0, id).setParameter(1, weekNum).executeUpdate();
         getSession().createQuery("delete from DoneWeekReport where userId=? and weekNum=?").setParameter(0, id).setParameter(1, weekNum).executeUpdate();
+        getSession().createQuery("delete from PlanWeekReport where userId=? and weekNum=?").setParameter(0, id).setParameter(1, weekNum+1).executeUpdate();
     }
 
     //查询周报
