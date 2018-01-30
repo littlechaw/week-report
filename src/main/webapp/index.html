@@ -190,7 +190,7 @@
                     $scope.formData.doneObj = response.data;
                     var i = $scope.formData.doneObj.length;
                     for (var k = 0; k < i; k++) {
-                        if ($scope.formData.doneObj[k].remark == null || $scope.formData.doneObj[remark] == "") {
+                        if ($scope.formData.doneObj[k].remark == null || $scope.formData.doneObj[k].remark == "" || $scope.formData.doneObj[k].remark == "null") {
                             $scope.formData.doneObj[k].remark = "";
                         }
                     }
@@ -350,6 +350,7 @@
     });
     mainApp.filter("whichDay", function () {
         return function (text, time) {
+            console.info(text,time);
             var num = time.indexOf(text);
             var weekArr = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
             return weekArr[num];
