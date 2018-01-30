@@ -350,7 +350,6 @@
     });
     mainApp.filter("whichDay", function () {
         return function (text, time) {
-            console.info(text,time);
             var num = time.indexOf(text);
             var weekArr = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
             return weekArr[num];

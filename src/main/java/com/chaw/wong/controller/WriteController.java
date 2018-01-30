@@ -38,19 +38,18 @@ public class WriteController {
     @RequestMapping(value = "get/getDayinWeek", method = {RequestMethod.POST, RequestMethod.GET})
     public List getFirstDayOfWeek() {
         List result = new ArrayList();
-        Calendar cal = Calendar.getInstance();
-        int date = cal.get(Calendar.DAY_OF_MONTH);
-        int n = cal.get(Calendar.DAY_OF_WEEK);
-        if (n == 1) {
-            n = 7;
-        } else {
-            n = n - 1;
-        }
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        for (int i = 1; i <= 7; i++) {
-            cal.set(Calendar.DAY_OF_MONTH, date + i - n);
-            result.add(sdf.format(cal.getTime()));
+        String date = getWeekDays(0);
+        try {
+            for (int i = 0; i < 7; i++) {
+                Calendar cd = Calendar.getInstance();
+                cd.setTime(sdf.parse(date));
+                cd.add(Calendar.DATE, i);
+                String riqi = sdf.format(cd.getTime());
+                result.add(i, riqi);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return result;
     }
@@ -130,11 +129,10 @@ public class WriteController {
 
 
         String beginDate = sdf.format(calendar1.getTime());
-//        calendar1.add(Calendar.DATE, 6);
 
-//        String endDate = sdf.format(calendar1.getTime());
 
         return beginDate;
     }
+
 
 }
