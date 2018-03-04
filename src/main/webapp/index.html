@@ -254,11 +254,11 @@
             var planObj = $scope.formData.planObj;
 
             for (var i in doneObj) {
-                if (doneObj[i].content != null && doneObj[i].percent != "100%" && (doneObj[i].remark == null || doneObj[i].remark == "")) {
+                if (doneObj[i].content != null && doneObj[i].content != "" && doneObj[i].percent != "100%" && (doneObj[i].remark == null || doneObj[i].remark == "")) {
                     dtd.reject("未100%完成的，请填写备注");
                     return dtd;
                 }
-                if (doneObj[i].content != null && (doneObj[i].percent == null || doneObj[i].planTime == null || doneObj[i].doneTime == null)) {
+                if (doneObj[i].content != null && doneObj[i].content != "" && (doneObj[i].percent == null || doneObj[i].planTime == null || doneObj[i].doneTime == null)) {
                     dtd.reject("请完善周报内容——本周工作小结");
                     return dtd;
                 }
