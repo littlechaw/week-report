@@ -41,4 +41,9 @@ public class UserService {
         return result;
     }
 
+    @Transactional
+    public void updateStatusNoCon(){
+        userDAO.updateStatusNoCon();
+    }
+
 }

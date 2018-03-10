@@ -43,8 +43,13 @@ public class UserDAO {
         getSession().createQuery(hql).setParameter(0, status).setParameter(1, id).executeUpdate();
     }
 
-    public List getNotCommit(){
-        String hql="from User where status=0 order by team asc";
+    public void updateStatusNoCon() {
+        String hql = "update User set status=?";
+        int num=getSession().createQuery(hql).setParameter(0,0).executeUpdate();
+    }
+
+    public List getNotCommit() {
+        String hql = "from User where status=0 order by team asc";
         return getSession().createQuery(hql).list();
     }
 
