@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Repository
 public class UserDAO {
@@ -16,13 +17,6 @@ public class UserDAO {
     private Session getSession() {
         return this.sessionFactory.getCurrentSession();
     }
-
-//    private Session getSession() {
-//        if (session == null) {
-//            session = sessionFactory.openSession();
-//        }
-//        return session;
-//    }
 
     public User getUserById(User user) {
         User res = (User) getSession().createQuery("from User where userId =? and password = ?").setParameter(0, user.getUserId()).setParameter(1, user.getPassword()).uniqueResult();
@@ -42,6 +36,16 @@ public class UserDAO {
         } else {
             return false;
         }
+    }
+
+    public void updateStatus(int status, String id) {
+        String hql = "update User set status=? where userId=?";
+        getSession().createQuery(hql).setParameter(0, status).setParameter(1, id).executeUpdate();
+    }
+
+    public List getNotCommit(){
+        String hql="from User where status=0 order by team asc";
+        return getSession().createQuery(hql).list();
     }
 
 }

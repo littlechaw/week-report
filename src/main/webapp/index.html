@@ -31,6 +31,7 @@
                                 <li><a href="#/write">写周报</a></li>
                                 <li><a href="#/record">周报记录</a></li>
                                 <li><a href="#/daochu" ng-show="isAdmin">周报合集</a></li>
+                                <li><a href="#/notCommit" ng-show="isAdmin">未提交</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -66,6 +67,9 @@
             }).when('/daochu', {
                 templateUrl: 'daochu.html',
                 controller: 'daochuCtrl'
+            }).when('/notCommit', {
+                templateUrl: 'notCommit.html',
+                controller: 'notCommitCtrl'
             }).otherwise({
                 redirectTo: '/write'
             });
@@ -85,6 +89,22 @@
             });
         });
     });
+    mainApp.controller("notCommitCtrl",function ($scope, $http) {
+        $scope.$on('$viewContentLoaded', function () {
+            $scope.formData={};
+            $http({
+                url: "get/getNotCommit",
+                method: "POST",
+            }).then(function onSuccess(data) {
+                if (data && data.data) {
+                    $scope.formData = data.data;
+                    console.info($scope.formData);
+                }
+            }).catch(function onError(e) {
+                console.info(e);
+            });
+        });
+    })
     mainApp.controller("writeCtrl", function ($scope, $http) {
         $scope.$on('$viewContentLoaded', function () {
             $scope.formData = {};

@@ -63,21 +63,4 @@ public class User {
         this.level = level;
     }
 
-//    @Column(name="email")
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//
-//    @Column(name="status")
-//    public short getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(short status) {
-//        this.status = status;
-//    }
 }

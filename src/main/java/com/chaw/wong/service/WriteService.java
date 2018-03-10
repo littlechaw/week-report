@@ -1,5 +1,6 @@
 package com.chaw.wong.service;
 
+import com.chaw.wong.dao.UserDAO;
 import com.chaw.wong.dao.WriteDAO;
 import com.chaw.wong.entity.PlanWeekReport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import java.util.Map;
 public class WriteService {
     @Autowired
     private WriteDAO writeDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @Transactional
     public Boolean insertReport(String id, String name, Map report) {
@@ -36,8 +39,7 @@ public class WriteService {
             if (((Map) p).get("content") != null && ((Map) p).get("content") != "")
                 writeDAO.insertPlan(id, name, p, weekNum + 1);
         }
-
-
+        userDAO.updateStatus(1,id);
         return true;
     }
 
