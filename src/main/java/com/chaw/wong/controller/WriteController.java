@@ -26,6 +26,7 @@ public class WriteController {
     @RequestMapping(value = "get/getAllReport", method = {RequestMethod.POST, RequestMethod.GET})
     public Map getAllReport(@RequestBody String team) {
         Calendar c = Calendar.getInstance();
+        c.setFirstDayOfWeek(Calendar.MONDAY);
         int weekNum = c.get(Calendar.WEEK_OF_YEAR);
         if (team == null) {
             team = "1";
@@ -88,6 +89,7 @@ public class WriteController {
     @RequestMapping(value = "get/getDwr", method = {RequestMethod.GET, RequestMethod.POST})
     public List<PlanWeekReport> getByWeekNum(HttpServletRequest request) {
         Calendar c = Calendar.getInstance();
+        c.setFirstDayOfWeek(Calendar.MONDAY);
         HttpSession session = request.getSession();
         int weekNum = c.get(Calendar.WEEK_OF_YEAR);
         String id = ((User) session.getAttribute("userInfo")).getUserId();
@@ -99,6 +101,7 @@ public class WriteController {
     @RequestMapping(value = "get/getMyReport", method = {RequestMethod.GET, RequestMethod.POST})
     public Object selectLastWeek(HttpServletRequest request) {
         Calendar c = Calendar.getInstance();
+        c.setFirstDayOfWeek(Calendar.MONDAY);
         HttpSession session = request.getSession();
         int weekNum = c.get(Calendar.WEEK_OF_YEAR);
         String id = ((User) session.getAttribute("userInfo")).getUserId();
