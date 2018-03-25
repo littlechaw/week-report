@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -47,5 +49,11 @@ public class UserController {
     public Boolean insertSomeData(@RequestBody User user) {
         user.setLevel(1);
         return userService.insertSomeData(user);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "get/getNotCommit", method = {RequestMethod.POST, RequestMethod.GET})
+    public List<Map<String,String>> getNotCommit() {
+        return userService.getNotCommit();
     }
 }
