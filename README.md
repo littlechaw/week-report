@@ -1,3 +1,5 @@
 # week-report
-采用的ssh框架，框架本身来自互联网一位作者。
-个人写着玩的，地址请访问chaw.wang
+
+后台框架部分在凯爷和IronCat帮助下完善
+
+html部分个人写着玩的，用的angularjs 1.x，运行后地址请访问chaw.wang
